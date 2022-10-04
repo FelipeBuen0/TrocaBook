@@ -1,3 +1,19 @@
+//@method Crypt();
+//Encrypt all the data that passes through (focus in passwords)
+const crypt = {
+    secret: 'ko_ob',
+    encrypt: function (p) {
+        var a = CryptoJS.AES.encrypt(p, crypt.secret);
+        a = a.toString();
+        return a;
+    },
+    decrypt: function (p) {
+        var b = CryptoJS.AES.decrypt(p, crypt.secret);
+        b = b.toString(CryptoJS.enc.Utf8);
+        return b;
+    },
+}
+
 function onLoadHandler() {
     local = "http://localhost/app/"
     link = window.location
@@ -34,43 +50,22 @@ function beforeHtmlLoadSuccess(a, b, x) {
 function beforeHtmlLoadError(a, b, x) {
     const me = this;
 }
-const crypt = {
-    secret: 'ko_ob',
-    encrypt: function (p) {
-        var a = CryptoJS.AES.encrypt(p, crypt.secret);
-        a = a.toString();
-        return a;
-    },
-    decrypt: function (p) {
-        var b = CryptoJS.AES.decrypt(p, crypt.secret);
-        b = b.toString(CryptoJS.enc.Utf8);
-        return b;
-    },
-}
+
+
 
 function onSignInClick() {
-    const u = $('input.username').val()
-    let p = $('input.password').val()
+    let u = $('input.username').val();
+    let p = $('input.password').val();
     if (u != '' && p != '') {
         p = crypt.encrypt(p);
-        let obj = {
-            username: u,
-            password: p,
-        }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("log").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("POST", "api/config.php");
-        xmlhttp.send(obj);
+        $.post("app/api/config.php", "user=" + u + "&pass=" + p, function( data ) {
+            console.log(data);
+        });
         return;
-        // localStorage.setItem('signed', true);
-        // return window.location.href = 'index.html'
     }
-    return alert('Todos os campos deverão ser preenchidos')
+    return alert('Todos os campos deverão ser preenchidos');
 }
+
 window.addEventListener('keydown', onKeyDown);
 
 function onKeyDown(e) {
