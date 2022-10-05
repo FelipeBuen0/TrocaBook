@@ -10,17 +10,22 @@
     <body onload="onLoadHandler()">
         <div id="content">
             <div class="container">
-                <h1>Login</h1>
-        
-                <form>
+                <h1>Cadastro</h1>
+                
+                <form action="app/api/config.php" method="POST" class='form'>
+                    <input name="email" type="email" class= "email">
+                    <br>
                     <input name="user" type="text" class= "username">
                     <br>
                     <input name="pass" type="password" class= "password">
                     <br>
-                    <a href="cadastro.html"><b>Não possui cadastro</b></a>
+                    <label for="chkBox">Manter-se conectado?</label>
+                    <input name="chkBox" type="checkbox" class= "chekbox">
+                    <br>
+                    <a href="login.html"><b>Ja possui uma conta</b></a>
                     <br>
                     <p id="log"></p>
-                    <input class = 'btn_submit' onclick="onSignInClick()" type="button" value="Confirmar">
+                    <input class = 'btn_submit' type="submit" value="Confirmar">
                 </form>
             </div>
         </div>

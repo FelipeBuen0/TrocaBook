@@ -27,7 +27,6 @@
             <li id="signout" onclick="onSignOutClick()"> Sair </li>
         </ol>
         <div class="container">
-
         </div>
     </div>
 </body>

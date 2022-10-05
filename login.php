@@ -10,21 +10,29 @@
     <body onload="onLoadHandler()">
         <div id="content">
             <div class="container">
-                <h1>Cadastro</h1>
-                
-                <form>
-                    <input name="email" type="email" class= "email">
-                    <br>
+                <h1>Login</h1>
+        
+                <form action="app/api/config.php" method = "POST" class="form">
                     <input name="user" type="text" class= "username">
                     <br>
                     <input name="pass" type="password" class= "password">
                     <br>
-                    <a href="login.html"><b>Ja possui uma conta</b></a>
+                    <a href="cadastro.html"><b>Não possui cadastro</b></a>
                     <br>
                     <p id="log"></p>
-                    <input class = 'btn_submit' onclick="onSignInClick()" type="button" value="Confirmar">
+                    <input class = 'btn_submit'  type="submit" value="Confirmar">
                 </form>
             </div>
         </div>
+        <?php
+        include ('app/api/connection.php');
+            if ($_REQUEST) {
+                $user = $_REQUEST['user'];
+                $pass = $_REQUEST['pass'];
+    
+                $query = `SELECT user_id, username FROM users WHERE users = "{$user}" and pass = "{$pass}" `;
+                $result = mysqli_query($conn, $query);
+            }
+        ?>
     </body>
 </html>

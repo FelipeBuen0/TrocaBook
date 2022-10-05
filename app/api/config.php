@@ -1,14 +1,18 @@
 <?php
-    // $a = ['casa', 'carro', 'moto', 'jagual', 'jaguar', 'limosine', 'limonada', 'cachorro', 'gato', 'casinha', "sweet", "daddy", 'eye'];
-    $b = $_REQUEST;
-
-    $arr = array(1, 2, 3, 4);
-    foreach ($arr as &$value) {
-        $value = $value * 2;
+    include ('connection.php');
+    
+    if(empty($_POST['email']) || empty($_POST['user']) || empty($_POST['user'])) {
+        // header('Location: cadastro.php');
+        exit();
     }
-    // foreach ($a as $res) {
-    //     $res = "The name of the things is " . $a[array_rand($a)];
-    // }
 
-    return "Results:" . $value;
+    $user = mysqli_real_escape_string($conn, $_POST['user']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pass = mysqli_real_escape_string($conn, $_POST['pass']);
+    if ($_REQUEST) {
+        $query = `INSERT INTO logincredentials (Email, Username, Pass) VALUES ($email, $user, $pass)`;
+        echo $query;
+        $result = mysqli_query($conn, $query);
+        echo $result;   
+    }
 ?>
