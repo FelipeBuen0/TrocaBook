@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="app/script/session.js"></script>
+    <script src="script/session.js"></script>
     <meta charset="UTF-8">
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -12,12 +12,12 @@
             <div class="container">
                 <h1>Login</h1>
         
-                <form action="login.php" method = "GET" class="form">
+                <form action="api/Login.php" method = "POST" class="form">
                     <input name="user" type="text" class= "username">
                     <br>
                     <input name="pass" type="password" class= "password">
                     <br>
-                    <a href="cadastro.html"><b>Não possui cadastro</b></a>
+                    <a href="register.html"><b>Não possui cadastro</b></a>
                     <br>
                     <p id="log"></p>
                     <input class = 'btn_submit'  type="submit" value="Confirmar">

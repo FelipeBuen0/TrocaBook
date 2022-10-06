@@ -1,4 +1,4 @@
 function onSignOutClick()  {
     localStorage.setItem('signed', false);
-    // window.location.href = 'login.php'   
+    window.location.href = 'Login.html'   
 }
