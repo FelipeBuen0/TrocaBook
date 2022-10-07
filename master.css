@@ -1,7 +1,3 @@
-#signout {
-    cursor: pointer;
-    text-decoration: underline;
-}
 #preloader {
     background: rgb(255, 255, 255) url(resources/media/Book.gif) no-repeat center center;
     height: 100vh;
