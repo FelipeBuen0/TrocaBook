@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-danger bg-opacity-75">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <a class="text-white navbar-brand">TROCABOOK</a>
             <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">

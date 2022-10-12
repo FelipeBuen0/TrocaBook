@@ -30,17 +30,17 @@ require_once '../api/database/Connection.php';
     <!-- <script src="../script/script.js"></script> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../master.css">
     <title><?php echo $_SESSION['username'] ?></title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-danger bg-opacity-75">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
 
             <a href="../Index.php" class="text-left btn btn-danger bi bi-box-arrow-left"></a>
 
-            <h1 class="h1-segoe"> Atualizar o Perfil</h1>
+            <h3 class="h1-segoe"> Atualizar o Perfil</h3>
         </div>
     </nav>
     <br>
@@ -48,7 +48,7 @@ require_once '../api/database/Connection.php';
     <form action="../api/AtualizarPerfil.php" method="POST" enctype = "multipart/form-data" class="d-flex justify-content-center container bd-solid-black">
         <div class="mb">
             <br>
-            <div class="cat">
+            <div class="img-div">
                 <img class="img-fit" src="../image/<?php echo $image ?>">
             </div>
             <br>
