@@ -43,7 +43,7 @@
                     <a href="register.php"><b>Não possui cadastro</b></a>
                     <br>
                     <p id="log"></p>
-                    <input class = 'btn_submit'  type="submit" value="Confirmar">
+                    <input class = 'btn_submit' name="submit"  type="submit" value="Confirmar">
                 </form>
             </div>
         </div>

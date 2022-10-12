@@ -4,7 +4,7 @@
             <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav me-5">
                     <li class="nav-item me-5">
-                        <a class="text-white nav-link active ms-5" aria-current="page" href="#">Perfil</a>
+                        <a class="text-white nav-link active ms-5" aria-current="page" href="view/perfil.php">Perfil</a>
                     </li>
                     <li class="nav-item me-5">
                         <a class="text-white nav-link active ms-5" href="#">Equipe</a>
@@ -17,6 +17,6 @@
             <a href="api/logout.php" class="btn btn-danger">Sair</a>
         </div>
     </nav>
-    <div class="container-fluid">
-        <a class="nav-link active">Olá, <?php echo $_SESSION['username']; ?>! O dia está lindo para ler hoje!</a>
-    </div>
+    <!-- <div class="container-fluid">
+        <a class="nav-link active">Olá, <?php //echo $_SESSION['username']; ?>! O dia está lindo para ler hoje!</a>
+    </div> -->

@@ -1,0 +1,26 @@
+.h1-segoe{
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+.bd-solid-black {
+    background-color: #dc35468d;
+    border: 1px solid #c5c7c7;
+    box-shadow: 0.5px 0.5px 4px grey;
+    border-radius: 10px ;
+    width: fit-content;
+}
+.txt-to-center {
+    text-align: center;     
+}
+
+.img-fit {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: contain;
+}
+.cat {
+    height:300px;
+    width: 300px;
+   }
