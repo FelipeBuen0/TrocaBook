@@ -5,28 +5,32 @@
     position: fixed;
     z-index: 100;
 }
+
 /* .giro-lindo{ 
     position: fixed !important;
     width: 100%;
     z-index: 2
 } */
-.h1-segoe{
+.h1-segoe {
     font-family: 'Courier New', Courier, monospace;
     color: white;
 }
+
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 0px;
-    background-color: #f1f1f1 !important ;
+    background-color: #f1f1f1 !important;
     overflow-x: hidden;
 }
+
 .user-title {
     font-weight: 600;
     font-size: 20px;
-    margin-top: 40px !important ;
-    margin-right: 100px !important ;
+    margin-top: 40px !important;
+    margin-right: 100px !important;
     width: fit-content;
 }
+
 .data-hora {
     height: fit-content;
     width: fit-content;
@@ -34,52 +38,135 @@ body {
     font-size: 13px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.img-fit {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
-.img-div {
-    height:300px;
-    width: fit-content;
+
+.profile-photo-contaier {
+    height: 300px;
+    width: 300px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.profile-photo {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.img-fit {
+    height: 100% !important;
+    width: 100%;
+    object-fit: contain;
+}
+
+.img-div {
+    height: 320px;
+    width: 480px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .user-img-fit {
     height: 100%;
     width: 100%;
     border-radius: 50%;
     object-fit: contain;
 }
+
 .user-img-div {
     height: 100px;
     width: 100px;
     display: inline-block;
 }
+
 .bd-solid-black {
     background-color: whitesmoke;
     box-shadow: 0.5px 0.5px 4px grey;
-    border-radius: 10px ;
+    border-radius: 10px;
     width: fit-content;
 }
+
 /* ===== Scrollbar CSS =====
   /* Firefox */
-  * {
+* {
     scrollbar-width: auto;
     scrollbar-color: #858585 #f1f1f1;
-  }
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
     width: 16px;
-  }
+}
 
-  *::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background: #f1f1f1;
-  }
+}
 
-  *::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background-color: #858585;
     border-radius: 10px;
     border: 3px solid #f1f1f1;
-  } 
+}
+.my-dropdown {
+    min-width: 15em;
+    position: relative;
+    margin: 2em;
+}
+
+.my-dropdown * {
+    box-sizing: border-box;
+}
+
+.select{
+    background: #000000 ;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #181818;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+
+}
+.selected-clicked {
+    border: 2px solid #2d2d2d;
+    box-shadow: 0 0 0.8em #6a6a6a;
+}
+.select:hover {
+    background: #323232;
+}
+.menu {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    background: rgb(87, 87, 87);
+    border: 1px solid black;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: yellow;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    width: 100%;
+    transform: translatex(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+.menu li {
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    background: #858585;
+}
+
+.menu-open {
+    display: block;
+    opacity: 1;
+}

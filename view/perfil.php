@@ -11,7 +11,7 @@ require_once '../api/database/Connection.php';
     $record = $mysqli -> query($sql);
     $row = $record->fetch_assoc();
 
-    if ($row) {
+    if ($row['ProfilePhoto']) {
         $image = $row['ProfilePhoto'];
     }
     else
@@ -48,8 +48,8 @@ require_once '../api/database/Connection.php';
     <form action="../api/AtualizarPerfil.php" method="POST" enctype = "multipart/form-data" class="d-flex justify-content-center container bd-solid-black">
         <div class="mb">
             <br>
-            <div class="img-div">
-                <img class="img-fit" src="../image/<?php echo $image ?>">
+            <div class="profile-photo-contaier">
+                <img class="profile-photo" src="../image/<?php echo $image ?>">
             </div>
             <br>
             <input class="form-control form-control-sm" name="image" type="file">

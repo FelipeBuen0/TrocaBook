@@ -1,5 +1,4 @@
 <?php
-
 ?>
 <br>
 <div class="card container" style="width: 32rem;">
@@ -10,7 +9,7 @@
         </div>
     </div>
     <div class="img-div">
-        <img src="image/gato.png" class="mx-auto img-fit img-thumbnail " alt="...">
+        <img src="image/IMG-20220131-WA0002.jpg" class="mx-auto img-fit img-thumbnail " alt="...">
     </div>
     <div class="card-body">
         <h5 class="card-title">Card title</h5>
