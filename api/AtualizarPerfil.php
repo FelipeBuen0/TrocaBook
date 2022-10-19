@@ -1,24 +1,24 @@
 <?php
 include_once 'database/Connection.php';
 include_once 'protect.php';
-$LoginId = $_SESSION['id'];
+$Id = $_SESSION['id'];
 
 if (isset($_POST['update']))
     {
         //Variáveis dos campos obtidos da view "Perfil.php"
         $user = mysqli_real_escape_string($mysqli, $_POST['user_update']);
         $email = mysqli_real_escape_string($mysqli, $_POST['email_update']);
-        $pass = mysqli_real_escape_string($mysqli, $_POST['password_update']);
+        $Password = mysqli_real_escape_string($mysqli, $_POST['Passwordword_update']);
 
         //validação dos campos
-        if (empty($user) || empty($email) || empty($pass)){
+        if (empty($user) || empty($email) || empty($Password)){
             echo "<h3>Um ou mais campos estão vazios</h3> <a href='../view/perfil.php'>Voltar</a>";
         } else {
-            $sql = "UPDATE logincredentials 
+            $sql = "UPDATE LoginCredentials 
                        SET Email = '$email'
                           ,Username = '$user'
-                          ,Pass = '$pass'
-                     WHERE LoginId      = $LoginId";
+                          ,Password = '$Password'
+                     WHERE Id      = $Id";
 
             $result = $mysqli -> query($sql) or die ('Erro');
             if ($result) header("location: ../view/perfil.php");
@@ -33,9 +33,9 @@ if (isset($_POST['update']))
                 $filename = $_FILES['image']['name'];
                 $tempname = $_FILES['image']['tmp_name'];
                 $folder = "../image/" . $filename;
-                $sql = "UPDATE logincredentials 
-                           SET ProfilePhoto = '$filename'
-                         WHERE LoginId      = $LoginId";
+                $sql = "UPDATE LoginCredentials 
+                           SET Image = '$filename'
+                         WHERE Id      = $Id";
 
                 $result = $mysqli -> query($sql) or die ('Erro');
                 if (move_uploaded_file($tempname, $folder)) {

@@ -2,17 +2,17 @@
 include_once '../api/protect.php';
 require_once '../api/database/Connection.php';
 
-    $LoginId = $_SESSION['id'];
+    $Id = $_SESSION['id'];
     // SQL Get para pegar as informações do perfil
     $sql = "SELECT * 
-              FROM logincredentials
-             WHERE LoginId = $LoginId";
+              FROM LoginCredentials
+             WHERE Id = $Id";
 
     $record = $mysqli -> query($sql);
     $row = $record->fetch_assoc();
 
-    if ($row['ProfilePhoto']) {
-        $image = $row['ProfilePhoto'];
+    if ($row['Image']) {
+        $image = $row['Image'];
     }
     else
     {
@@ -60,8 +60,8 @@ require_once '../api/database/Connection.php';
             <label for="update_username" class="wd-med form-label">Nome do usuário</label>
             <input type="text" class="form-control" name="user_update" id="update_username" value="<?php echo $row['Username']?>">
             <br>
-            <label for="update_password" class="wd-med form-label">Senha</label>
-            <input type="password" class="form-control" name="password_update" id="update_password" value="<?php echo $row['Pass']?>">
+            <label for="update_Passwordword" class="wd-med form-label">Senha</label>
+            <input type="Passwordword" class="form-control" name="Passwordword_update" id="update_Passwordword" value="<?php echo $row['Password']?>">
             <br>
             <input type="submit" value="Atualizar"  name="update" id='update_submit' class="btn btn-danger opacity-80">
             <br>

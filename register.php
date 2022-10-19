@@ -2,36 +2,57 @@
   include ('api/database/Connection.php');
     if (isset($_POST['user']))
     {
-      echo "Testando funcionalidade";
         $user = mysqli_real_escape_string($mysqli, $_POST['user']);
         $email = mysqli_real_escape_string($mysqli, $_POST['email']);
-        $pass = mysqli_real_escape_string($mysqli, $_POST['pass']);
-        strtolower($email);
-        $insert = "INSERT INTO logincredentials (Email, Username, Pass) VALUES ('$email', '$user', '$pass'); ";
-        $a = $mysqli -> query($insert) or die('Falha no sistema, tente novamente mais tarde!');
+        $Password = mysqli_real_escape_string($mysqli, $_POST['Password']);
+
+        $sql = "SELECT *
+                  FROM LoginCredentials WHERE Email = '$email' OR Username = '$user'";
+
+        $result = $mysqli -> query($sql) or die ('Falha no sistema, tente novamente mais tarde!');
+        if (!$result->num_rows > 0) {
+            // $Password = password_hash($Plain_Password, PASSWORD_DEFAULT); TODO: Criptografia de senhas
+            strtolower($email);
+            $insert = "INSERT INTO LoginCredentials 
+                                   (
+                                    Email
+                                   ,Username
+                                   ,Password
+                                   ,CreatedAt
+                                   )
+                            VALUES (
+                                    '$email'
+                                   ,'$user'
+                                   ,'$Password'
+                                   , NOW()
+                                   );";
+
+
+            $a = $mysqli -> query($insert) or die('Falha no sistema, tente novamente mais tarde!');
         
-        if ($a) {
-        $query = "SELECT LoginId, Username FROM logincredentials WHERE Email = '$email' AND Pass = '$pass';";
+            if ($a) {
 
-        $result = $mysqli -> query($query) or die('Falha no sistema, tente novamente mais tarde!');
+                $query = "SELECT Id, Username FROM LoginCredentials ORDER BY Id DESC LIMIT 1";
 
-        $rows = $result->num_rows;
-        if ($rows == 1) {
-            $credentials = $result->fetch_assoc();
-            if (!isset($_SESSION)) {
-                session_start();
-            }
-            $_SESSION['id'] = $credentials['LoginId'];
-            $_SESSION['username'] = $credentials['Username'];
-            if ($_SESSION['id']) {
-                header('Location: index.php');
-            }
+                $result = $mysqli -> query($query) or die('Falha no sistema, tente novamente mais tarde!');
+
+                $rows = $result->num_rows;
+                if ($rows == 1) {
+                    $credentials = $result->fetch_assoc();
+                    if (!isset($_SESSION)) {
+                        session_start();
+                    }
+                    $_SESSION['id'] = $credentials['Id'];
+                    $_SESSION['username'] = $credentials['Username'];
+                    if ($_SESSION['id']) {
+                        header('Location: index.php');
+                    }
+                }
+            }       
         } else {
-            echo 'Usuário ou senha não identificados';  
+            echo "E-mail ou usuário já cadastrado, <a href='login.php'><b>entrar</b></a>";   
         }
-        }   
     }
-  // }    
 ?>
 
 <!-- SEÇÃO HTML -->
@@ -48,11 +69,11 @@
             <div class="container">
                 <h1>Cadastro</h1>
                 <form method="POST" action="register.php" class='form'>
-                    <input name="email" type="email" class= "email">
+                    <input name="email" type="email" class= "email" required>
                     <br>
-                    <input name="user" type="text" class= "username">
+                    <input name="user" type="text" class= "username" required>
                     <br>
-                    <input name="pass" type="password" class= "password">
+                    <input name="Password" type="Passwordword" class= "Passwordword" required>
                     <br>
                     <label for="chkBox">Manter-se conectado?</label>
                     <input name="chkBox" type="checkbox" class= "chekbox">
