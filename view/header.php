@@ -1,20 +1,21 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <a class="text-white navbar-brand">TROCABOOK</a>
-            <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
-                <ul class="navbar-nav me-5">
-                    <li class="nav-item me-5">
-                        <a class="text-white nav-link active ms-5" aria-current="page" href="view/perfil.php">Perfil</a>
-                    </li>
-                    <li class="nav-item me-5">
-                        <a class="text-white nav-link active ms-5" href="#">Equipe</a>
-                    </li>
-                    <li class="nav-item me-5">
-                        <a class="text-white nav-link active ms-5" href="#">Sobre</a>
-                    </li>
-                </ul>
+
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            
+            <div id="dropdown">
+            <div id="dropbtn"><img src="res/app-img/icons/bookmark.png " class="img-fit icon-fit"></div>
+                <div id="dropdown-content">
+                    <a href="view/perfil.php">Perfil</a>
+                    <a href="#">Equipe</a>
+                    <a href="#">Sobre</a>
+                    <a href="api/logout.php" id = "exit-button" >Sair </a>
+                </div>
             </div>
-            <a href="api/logout.php" class="btn btn-danger">Sair</a>
         </div>
     </nav>
     <!-- <div class="container-fluid">

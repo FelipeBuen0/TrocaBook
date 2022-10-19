@@ -62,26 +62,29 @@
 <head>
     <script src="script/session.js"></script>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <body>
         <div id="content">
             <div class="container">
-                <h1>Cadastro</h1>
-                <form method="POST" action="register.php" class='form'>
-                    <input name="email" type="email" class= "email" required>
+                <form method="POST" action="register.php" class='form container' style="width: 32rem;">
                     <br>
-                    <input name="user" type="text" class= "username" required>
+                    <h1>Cadastro</h1>
                     <br>
-                    <input name="Password" type="Passwordword" class= "Passwordword" required>
+                    <label for="email" class="form-label"> Email</label>
+                    <input name="email" type="email" class= "form-control" required>
                     <br>
-                    <label for="chkBox">Manter-se conectado?</label>
-                    <input name="chkBox" type="checkbox" class= "chekbox">
+                    <label for="user" class="form-label"> Nome de usuário</label>
+                    <input name="user" type="text" class= "form-control" required>
+                    <br>
+                    <label for="Password" class="form-label"> Password</label>
+                    <input name="Password" type="Password" class="form-control" required>
                     <br>
                     <a href="Login.php"><b>Ja possui uma conta</b></a>
                     <br>
                     <p id="log"></p>
-                    <input class = 'btn_submit' type="submit" value="Confirmar">
+                    <input class = 'btn btn-outline-primary' type="submit" value="Confirmar">
                 </form>
             </div>
         </div>

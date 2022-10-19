@@ -4,7 +4,7 @@
     {
         $user = mysqli_real_escape_string($mysqli, $_POST['user']);
         $Password = mysqli_real_escape_string($mysqli, $_POST['Password']);
-        // $Password = password_hash($Plain_Password, PASSWORD_DEFAULT); 
+        //$Password = password_hash($Plain_Password, PASSWORD_DEFAULT); 
         $sql = "SELECT Id, Username, Password
                   FROM LoginCredentials
                  WHERE Username = '$user' AND Password = '$Password'";
@@ -30,22 +30,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <body>
         <div id="content">
             <div class="container">
-                <h1>Login</h1>
-        
-                <form method = "POST" class="form">
-                    <input name="user" type="text" class= "username" required>
+                <br>
+                <form method = "POST" class="form container" style="width: 32rem;">
+                    <h1 class="">Login</h1>
                     <br>
-                    <input name="Password" type="Passwordword" class= "Passwordword" required>
+                    <label for="user" class="form-label">Nome de usuário</label>
+                    <input name="user" type="text" class= "username form-control" required>
+                    <br>
+                    <label for="Password" class="form-label">Senha</label>
+                    <input name="Password" type="Password" class= "Password form-control" required>
                     <br>
                     <a href="register.php"><b>Não possui cadastro</b></a>
                     <br>
                     <p id="log"></p>
-                    <input class = 'btn_submit' name="submit"  type="submit" value="Confirmar">
+                    <input name="submit"  type="submit" class="btn btn-outline-primary" value="Confirmar">
                 </form>
             </div>
         </div>

@@ -20,7 +20,10 @@ include('api/protect.php');
 
 <body>
     <!-- <div id="preloader"></div> -->
-    <?php include_once('view/header.php'); ?>
+    <?php include_once('view/header.php');?>
+    <div class="position-of-icon">
+        <button class ="btn btn-danger" ></button>
+    </div>
     <?php include_once('view/home.php'); ?>
     <script type="text/javascript" src="script/script.js"></script>
 </body>
