@@ -3,7 +3,7 @@ include('api/protect.php');
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -21,10 +21,10 @@ include('api/protect.php');
 <body>
     <!-- <div id="preloader"></div> -->
     <?php include_once('view/header.php');?>
-    <div class="position-of-icon">
-        <button class ="btn btn-danger" ></button>
+    <?php include_once('view/CreatePost.php'); ?>
+    <?php include_once('view/post.php'); ?>
+    <div class="button-div d-flex justify-content-center " onclick="AddNewPost()"> <p class="p-button"> Post </p> <img class = "icon-fit plus-center" src="res/app-img/icons/plus-sign.png" alt="">
     </div>
-    <?php include_once('view/home.php'); ?>
     <script type="text/javascript" src="script/script.js"></script>
 </body>
-</html>
+</html> 

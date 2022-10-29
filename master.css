@@ -1,3 +1,7 @@
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 #preloader {
     background: rgb(255, 255, 255) url(resources/media/Book.gif) no-repeat center center;
     height: 100vh;
@@ -17,7 +21,6 @@
 }
 
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 0px;
     background-color: #f1f1f1 !important;
     overflow-x: hidden;
@@ -60,15 +63,65 @@ body {
 }
 
 .icon-fit {
-    height: 32px;
-    width: 32px;
+    height: 14px;
+    width: 14px;
 }
-.position-of-icon {
+.plus-center {
+    margin-top: 6px;
+    margin-left: 6px;
+}
+.button-div p  {
+
+}
+.button-div {
     position: fixed;
-    left: 95%;
+    cursor: pointer;
+    background-color: white;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 2px 3px 4.7px 1px grey;
+    left: 90%;
     top: 90%;
 }
+.p-button{
+    font-weight: 600;
+}
 
+/* animation for button-div*/
+/* .myDiv-ctn:hover{
+    background-color: #d3d3d3
+} */
+.btfp:hover {
+background-color: #d3d3d3
+}
+.button-div:hover {
+    background-color: whitesmoke;
+}
+.button-div:hover .myDiv-ctn { display: block;}
+/* End of animation */
+.myDiv-ctn {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    min-width: 160px;
+    bottom: 30px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 20px;
+  }
+  .btfp{
+    color: #303030;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+.myContainer {
+    border: 1px solid black;
+    left: 15%;
+    width: 400px !important;
+}
 .img-div {
     height: 320px;
     width: 480px;
@@ -160,3 +213,4 @@ body {
   #dropdown:hover #dropdown-content {display: block;}
   
   #dropdown:hover #dropbtn {background-color: #303030;}
+  

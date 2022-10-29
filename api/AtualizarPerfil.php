@@ -1,7 +1,8 @@
 <?php
 include_once 'database/Connection.php';
 include_once 'protect.php';
-$Id = $_SESSION['id'];
+$id = $_SESSION['id'];
+$username = $_SESSION['username'];
 
 if (isset($_POST['update']))
     {
@@ -18,7 +19,7 @@ if (isset($_POST['update']))
                        SET Email = '$email'
                           ,Username = '$user'
                           ,Password = '$Password'
-                     WHERE Id      = $Id";
+                     WHERE Id      = $id";
 
             $result = $mysqli -> query($sql) or die ('Erro');
             if ($result) header("location: ../view/perfil.php");
@@ -32,17 +33,19 @@ if (isset($_POST['update']))
             if (in_array($fileType, $allowTypes)) {
                 $filename = $_FILES['image']['name'];
                 $tempname = $_FILES['image']['tmp_name'];
-                $folder = "../image/" . $filename;
+                $folder = "../image/ProfilePhoto/$username$id/";
                 $sql = "UPDATE LoginCredentials 
                            SET Image = '$filename'
-                         WHERE Id      = $Id";
+                         WHERE Id      = $id";
 
                 $result = $mysqli -> query($sql) or die ('Erro');
-                if (move_uploaded_file($tempname, $folder)) {
-                    header("location: ../view/perfil.php");
-                } else {
-                    echo "<h3>  Falha na transferência para o servidor!</h3> 
-                          <a href='../view/perfil.php'>Tente Novamente!";
+                if ($result) {
+                    if (!file_exists($folder)){
+                        mkdir($folder, 0777, true);
+                    }
+                    $folder .= $filename;
+                    move_uploaded_file($tempname, $folder);
+                    header('location:../view/perfil.php');
                 }
             }
             else 

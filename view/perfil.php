@@ -3,6 +3,7 @@ include_once '../api/protect.php';
 require_once '../api/database/Connection.php';
 
     $Id = $_SESSION['id'];
+    $username = $_SESSION['username'];
     // SQL Get para pegar as informações do perfil
     $sql = "SELECT * 
               FROM LoginCredentials
@@ -49,7 +50,7 @@ require_once '../api/database/Connection.php';
         <div class="mb">
             <br>
             <div class="profile-photo-contaier">
-                <img class="profile-photo" src="../image/<?php echo $image ?>">
+                <img class="profile-photo" src="../image/ProfilePhoto/<?php echo $username.$Id.'/'.$image ?>">
             </div>
             <br>
             <input class="form-control form-control-sm" name="image" type="file">
