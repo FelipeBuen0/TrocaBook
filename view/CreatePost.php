@@ -9,7 +9,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="CloseModalButton()" aria-label="Close"></button>
       </div>
       <div class="modal-body d-flex justify-content-center">
-        <form action="api/post.php" method="POST" enctype = "multipart/form-data" class="form-floating">
+        <form action="api/CreatePost.php" method="POST" enctype = "multipart/form-data" class="form-floating">
         <!-- Aonde localiza os inputs e os campos para enviar pro banco de dados e preencher a tabela posts -->
         <div class="custom-bg">
           <!-- form-control é uma variável do framework bootstrap que estiliza o formulário de maneira rápida -->
@@ -26,14 +26,14 @@
             <!-- O Select é a ferramenta que me permite escolher entre os gêneros disponíveis -->
             <select name="select" class="form-select" required>
               <option value="Select">--Gênero--</option>
-              <option value="Ação/Aventura">Ação/Guerra</option>
+              <option value="Ação/Aventura">Ação/Aventura</option>
               <option value="Ficção Científica">Ficção Científica</option>
               <option value="Drama">Drama</option>
               <option value="Romance">Romance</option>
               <option value="Didático">Didático</option>
               <option value="Terror/Suspense">Terror/Suspense</option>
               <option value="HQ">HQ ou Mangás</option>
-              <option value="Guerra">Aventura</option>
+              <option value="Guerra">Guerra</option>
             </select>
         </div>
       </div>

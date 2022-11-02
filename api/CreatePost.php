@@ -4,12 +4,13 @@
     function Insert($filename) {
         include_once 'database/Connection.php';
         $id = $_SESSION['id'];
+        $username = $_SESSION['username'];
         //o método mysqli_real_escape_string limpa a string de qualquer caractére que possa danificar a integridade do nosso banco de dados. 
         // Sendo assim, uso este método para obter a variável limpa e armazenar no $title. 
         $title = mysqli_real_escape_string($mysqli, $_POST['title']);
         $content = mysqli_real_escape_string($mysqli, $_POST['content']);
         $select = mysqli_real_escape_string($mysqli, $_POST['select']);
-        $sql = "INSERT INTO posts (OwnerId, content, CreatedAt, Image, Title, Genre) VALUE ($id, '$content', NOW(), '$filename', '$title', '$select') ";
+        $sql = "INSERT INTO posts (OwnerId, OwnerName, content, CreatedAt, Image, Title, Genre) VALUE ($id, '$username','$content', NOW(), '$filename', '$title', '$select') ";
         if ($mysqli->query($sql)) {
             return true;
         } else {
@@ -33,7 +34,7 @@
             if (in_array($fileType, $allowTypes)) {
                 $filename = $_FILES['image']['name'];   
                 $tempname = $_FILES['image']['tmp_name'];
-                $folder = "../image/Posts/$username$id/";
+                $folder = "../image/Posts/$id/";
                 if (Insert($filename)) {
                     //esse método faz com que a imagem seja baixada dentro de um diretório da aplicação.
                     if (!file_exists($folder)){

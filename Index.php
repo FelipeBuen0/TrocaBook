@@ -23,8 +23,8 @@ include('api/protect.php');
     <?php include_once('view/header.php');?>
     <?php include_once('view/CreatePost.php'); ?>
     <?php include_once('view/post.php'); ?>
-    <div class="button-div d-flex justify-content-center " onclick="AddNewPost()"> <p class="p-button"> Post </p> <img class = "icon-fit plus-center" src="res/app-img/icons/plus-sign.png" alt="">
-    </div>
+    <button class="btn btn-outline-primary button-div d-flex justify-content-center " onclick="AddNewPost()"> <p class="p-button"> Post </p> <img class = "icon-fit plus-center" src="res/app-img/icons/plus-sign.png" alt="">
+    </button>
     <script type="text/javascript" src="script/script.js"></script>
 </body>
 </html> 
