@@ -46,8 +46,10 @@
                     <label for="Password" class="form-label">Senha</label>
                     <input name="Password" type="Password" class= "Password form-control" required>
                     <br>
-                    <a href="register.php"><b>Não possui cadastro</b></a>
-                    <br>
+                    <div class="d-flex justify-content-evenly">
+                        <a href="register.php"><b>Não possui cadastro?</b></a>
+                        <a href="ForgotPassword.php"><b>Esqueceu a senha?</b></a>
+                    </div>
                     <p id="log"></p>
                     <input name="submit"  type="submit" class="btn btn-outline-primary" value="Confirmar">
                 </form>

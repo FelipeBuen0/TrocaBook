@@ -1,5 +1,23 @@
 <?php
   include ('api/database/Connection.php');
+  function GenerateSecurityQuestions()
+    {
+
+        $frases = [
+            "Qual foi seu animal de estimação favorito?",
+            "Com quantos anos você realizou sua primeira viagem?",
+            "Com quantos anos você começou a andar?",
+            "Qual foi sua primeira palavra?",
+            "Com quantos anos você aprender a ler e escrever?",
+            "Qual foi seu primeiro livro?"
+        ];
+
+        $count = count($frases) - 1;
+
+        $n = rand(0, $count);
+
+        return $frases[$n];
+    }
     if (isset($_POST['user']))
     {
         $user = mysqli_real_escape_string($mysqli, $_POST['user']);
