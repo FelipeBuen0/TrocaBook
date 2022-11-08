@@ -2,12 +2,12 @@
         <div class="container-fluid">
             <a class="text-white navbar-brand">TROCABOOK</a>
             
-            <form class="d-flex" role="search">
+            <form class="d-flex" method="GET" action="view/post.php" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-warning" type="submit"><img src="res/icons/search.svg" alt=""></button>
             </form>
             <div id="dropdown">
-            <div id="dropbtn"><img src="res/app-img/icons/bookmark.png " class="img-fit icon-fit"></div>
+            <div id="dropbtn" class="btn btn-warning"><img src="res/icons/bookmark-fill.svg " class="img-fit icon-fit"></div>
                 <div id="dropdown-content">
                     <a href="view/AtualizarPerfil.php">Atualizar Perfil</a>
                     <a href="view/MeusLivros.php">Meus Livros</a>
