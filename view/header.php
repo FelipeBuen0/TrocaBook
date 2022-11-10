@@ -3,7 +3,7 @@
             <a class="text-white navbar-brand">TROCABOOK</a>
             
             <form class="d-flex" method="GET" action="view/post.php" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="Procure um livro" aria-label="Search">
                 <button class="btn btn-warning" type="submit"><img src="res/icons/search.svg" alt=""></button>
             </form>
             <div id="dropdown">

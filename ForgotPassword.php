@@ -10,15 +10,16 @@
     $result = $mysqli->query($sql);
     $records = $result->fetch_assoc();
     if (isset($_POST['submit'])) {
-        $anwser = mysqli_real_escape_string($mysqli, $_POST['SecurityAnswer']);
+        $anwser = mysqli_real_escape_string($mysqli, $_POST['SecurityAnswer']); 
         $SecurityPassword = mysqli_real_escape_string($mysqli, $_POST['SecurityPassword']);
         $ConfirmSecurityPassword = mysqli_real_escape_string($mysqli, $_POST['ConfirmSecurityPassword']);
-
         if ($SecurityPassword != $ConfirmSecurityPassword) {
             return $message = "<h1>As senhas não são iguais, tente novamente!</h1>";
         }
 
         if ($anwser == $records['SecurityAnswer']) {
+            $SecurityPassword = base64_encode($SecurityPassword);
+            $SecurityPassword = sha1($SecurityPassword);
             $sql = "UPDATE logincredentials SET Password = '$SecurityPassword' WHERE email = '$email'";
             $result = $mysqli->query($sql);
             return $result == true ? header('Location: Login.php') : $message = "Houve um problema com o bando de dados, tente novamente mais tarde.";

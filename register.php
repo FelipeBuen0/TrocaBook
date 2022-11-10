@@ -25,7 +25,7 @@ if (isset($_POST['user'])) {
     $SecurityQuestion = $_POST['SecurityQuestion'];
     $SecurityAnswer = mysqli_real_escape_string($mysqli, $_POST['SecurityAnswer']);
     $sql = "SELECT *
-              FROM LoginCredentials 
+              FROM LoginCredentials
              WHERE Email    = '$email'
                 OR Username = '$user'";
 
@@ -35,6 +35,7 @@ if (isset($_POST['user'])) {
         // $Password = password_hash($Plain_Password, PASSWORD_DEFAULT); TODO: Criptografia de senhas
         strtolower($email);
         $Password = base64_encode($Password);
+        $Password = sha1($Password);
         $insert = "INSERT INTO LoginCredentials 
                                    (
                                     Email

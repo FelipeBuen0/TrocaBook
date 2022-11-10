@@ -1,22 +1,19 @@
 CREATE DATABASE books;
 
-USE DATABASE books;
-
-CREATE TABLE IF NOT EXISTS Images
-(
-  Id int not null primary key auto_increment,
-  Image varchar(45) not null,
-  CreatedAt datetime not null,
-  UptatedAt datetime,
-  User_Id int not null
-);
+USE books;
 
 CREATE TABLE IF NOT EXISTS LoginCredentials 
 (
   Id int not null auto_increment primary key,
   Email varchar(120) not null,
   Username varchar(90)not null,
-  Passwordword varchar(14) not null,
+  Password varchar(140) not null,
+  PhoneNumber varchar(14) not null,
+  TwitterAccount varchar(120) not null,
+  FacebookAccount varchar(120) not null,
+  InstagramAccount varchar(120) not null,
+  SecurityQuestion varchar(120) not null,
+  SecurityAnswer varchar(120) not null,
   CreatedAt datetime not null,
   UpdatedAt datetime,
   Image varchar(50)
@@ -26,17 +23,12 @@ CREATE TABLE IF NOT EXISTS Posts
 (
   Id int not null auto_increment primary key,
   OwnerId int not null,
-  ProductId int not null,
+  OwnerName varchar(50) not null,
+  Title varchar(100) not null,
+  Genre varchar(12) not null,
+  Troca tinyint(1) not null,
+  Image varchar(100) not null,
   content varchar(180) not null,
   CreatedAt datetime not null,
   UpdatedAt datetime
 );
-
-CREATE TABLE IF NOT EXISTS Products
-(
-  Id int not null auto_increment primary key,
-  UserId int not null,
-  Title varchar(50) not null,
-  Genre varchar(50) not null,
-  Author varchar(80) not null
-)

@@ -1,6 +1,6 @@
 <?php
     include_once 'api/database/Connection.php';
-    $SQL = 'Select *, posts.CreatedAt as PostCreatedAt, posts.Image as PostImage, logincredentials.Image as UserImage from posts inner Join logincredentials on logincredentials.Id = posts.OwnerId order by posts.Id desc';
+    $SQL = 'Select *, posts.Id as PostId, posts.CreatedAt as PostCreatedAt, posts.Image as PostImage, logincredentials.Image as UserImage from posts inner Join logincredentials on logincredentials.Id = posts.OwnerId order by posts.Id desc';
     $record = $mysqli->query($SQL) or die ('Falha ao se conectar ao servidor!');
     while ($row = $record->fetch_assoc()) {
         if (!$row['Image'] == null) {
@@ -10,7 +10,7 @@
         }
         echo '
         <br>
-        <div class="card container" style="width: 32rem;">
+        <div class="card container" id="post-'. $row['PostId'].'" style="width: 32rem;">
         <div class="img-div">
             <img src="image/Posts/' . $row['OwnerId'] . '/' . $row['PostImage'] . '" class="ms-1 img-fit img-thumbnail" alt="...">
         </div>

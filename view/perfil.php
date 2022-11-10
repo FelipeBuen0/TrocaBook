@@ -61,8 +61,11 @@ require_once '../api/database/Connection.php';
             <label for="update_username" class="wd-med form-label">Nome do usuário</label>
             <input type="text" class="form-control" name="user_update" id="update_username" value="<?php echo $row['Username']?>">
             <br>
-            <label for="update_Passwordword" class="wd-med form-label">Senha</label>
-            <input type="Passwordword" class="form-control" name="Passwordword_update" id="update_Passwordword" value="<?php echo $row['Password']?>">
+            <label for="update_Password" class="wd-med form-label">Senha</label>
+            <input type="Password" class="form-control" name="Password_update" id="update_Password">
+            <br>
+            <label for="update_Password" class="wd-med form-label">Senha</label>
+            <input type="Password" class="form-control" name="Password_update" id="update_Password">
             <br>
             <input type="submit" value="Atualizar"  name="update" id='update_submit' class="btn btn-danger opacity-80">
             <br>

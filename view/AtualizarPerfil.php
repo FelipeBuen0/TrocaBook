@@ -2,22 +2,23 @@
 include_once '../api/protect.php';
 require_once '../api/database/Connection.php';
 
-    $Id = $_SESSION['id'];
-    // SQL Get para pegar as informações do perfil
-    $sql = "SELECT * 
+$Id = 1;
+// SQL Get para pegar as informações do perfil
+$sql = "SELECT * 
               FROM LoginCredentials
              WHERE Id = $Id";
 
-    $record = $mysqli -> query($sql);
-    $row = $record->fetch_assoc();
+$record = $mysqli->query($sql);
+$row = $record->fetch_assoc();
 
-    function ProfilePhotoExists($row, $id) {
-        if (!$row['Image'] == null) {
-            return $image = $id .'/'. $row['Image'];
-        }
-        return $image = "no_photo.png"; ;
+function ProfilePhotoExists($row, $id)
+{
+    if (!$row['Image'] == null) {
+        return $image = $id . '/' . $row['Image'];
     }
-    
+    return $image = "no_photo.png";;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +36,7 @@ require_once '../api/database/Connection.php';
 </head>
 
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
 
             <a href="../Index.php" class="text-left btn btn-danger bi bi-box-arrow-left"></a>
@@ -44,33 +45,50 @@ require_once '../api/database/Connection.php';
         </div>
     </nav>
     <br>
-    <br>
-    <form action="../api/AtualizarPerfil.php" method="POST" enctype = "multipart/form-data" class="d-flex justify-content-center container bd-solid-black">
-        <div class="mb">
-            <br>
-            <div class="profile-photo-contaier">
-                <img class="profile-photo" src="../image/ProfilePhoto/<?php echo ProfilePhotoExists($row, $Id)?>">
+    <form action="../api/AtualizarPerfil.php" method="POST" enctype="multipart/form-data">
+        <div class="container">
+            <!-- Email -->
+            <div class="Email">
+                <label for="update_email" class="form-label">Email:</label>
+                <input type="email" class="form-control form-width" name="email_update" id="update_email" value="<?php echo $row['Email'] ?>">
             </div>
-            <input class="form-control btn btn-outline-secondary -form-control-sm" name="image" type="file">
-            <br>
-            <br>
+            <!-- Imagem -->
+            <div class="Image">
+                <div class="file-upload">
+                    <img src="../res/icons/Edit.svg" alt="">
+                    <!-- Seletor de imagem -->
+                    <input class="form-control" name="image" type="file"> 
+                </div>
+                <div class="profile-photo-contaier">
+                    <img class="profile-photo img-thumbnail" src="../image/ProfilePhoto/<?php echo ProfilePhotoExists($row, $Id) ?>">
+                </div>
+            </div>
+            <!-- Lugar do campo do usuário -->
+            <div class="usuario">
+                <label for="update_username" class="form-label">Usuário:</label>
+                <input type="text" class="form-control form-width" name="user_update" id="update_username" value="<?php echo $row['Username'] ?>">
+            </div>
+            <div class="twitter">
+                <label for="update_username" class="form-label">Twitter:</label>
+                <input type="text" class="form-control form-width" name="user_update" id="update_username" placeholder="Ex: https://twitter.com/Tr0caBook">
+            </div>
+            <div class="fb">
+                <label for="update_Password" class="form-label">Facebook: </label>
+                <input type="text" class="form-control form-width" name="Password_update" id="update_Password" placeholder="Ex: https://www.facebook.com/TrocaBookOficial">
+            </div>
+            <div class="ig">
+                <label for="update_Password" class="form-label">Instagram: </label>
+                <input type="password" class="form-control form-width" name="Password_update" id="update_Password" placeholder="Ex: https://www.instagram.com/TrocaBook/">
+            </div>
+            <div class="password">
+                <label for="update_Password" class="form-label">Senha: </label>
+                <input type="Password" class="form-control form-width" name="Password_update" id="update_Password" placeholder="***********">
+            </div>
+            <div class="Textarea">
+                <textarea class="form-control" name="" id="" cols="25" rows="8"></textarea>
+            </div>
         </div>
-        <br>
-        <div class="m-lft-p10">
-            <br>
-            <label for="update_email" class="wd-med form-label">Email</label>
-            <input type="email" class="form-control" name="email_update" id="update_email" value="<?php echo $row['Email']?>">
-            <br>
-            <label for="update_username" class="wd-med form-label">Nome do usuário</label>
-            <input type="text" class="form-control" name="user_update" id="update_username" value="<?php echo $row['Username']?>">
-            <br>
-            <label for="update_Passwordword" class="wd-med form-label">Senha</label>
-            <input type="Password" class="form-control" name="Passwordword_update" id="update_Passwordword" value="<?php echo $row['Password']?>">
-            <br>
-            <br>
-            <br>
-            <input type="submit" value="Atualizar"  name="update" id='update_submit' class="btn btn-success opacity-80 m-lft">
-        </div>
+        <input name= "submit" value="Confirmar" type="submit" class="btn-update-profile btn btn-outline-success opacity-75">
     </form>
 </body>
 

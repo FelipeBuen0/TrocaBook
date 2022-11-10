@@ -11,7 +11,9 @@ if (isset($_POST['login'])) {
     $rows = $result->num_rows;
     if ($rows == 1) {
         $row = $result->fetch_assoc();
-        if (base64_encode($Password) != $row['Password']) {
+        $Password = base64_encode($Password);
+        $Password = sha1($Password);
+        if ( $Password != $row['Password']) {
             echo '<p class="bg-warning">Usuário ou senha não identificados';
             return;
         }
@@ -55,7 +57,7 @@ if (isset($_POST['login'])) {
             <br>
             <div class="d-flex justify-content-between">
                 <a href="register.php"><b>Não possui cadastro?</b></a>
-                <a href="ForgotPassword.php "><b>Esqueceu a senha?</b></a>
+                <a href="EmailVerification.php "><b>Esqueceu a senha?</b></a>
             </div>
             <p id="log"></p>
             <input name="submit" type="submit" class="btn btn-outline-primary" value="Confirmar">

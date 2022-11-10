@@ -63,6 +63,7 @@ body {
 .profile-photo {
     height: 100%;
     width: 100%;
+    margin-left: 22%;
     border-radius: 50%;
     object-fit: contain;
 }
@@ -120,14 +121,16 @@ body {
     width: fit-content;
 }
 .m-lft-p10{
-    width: 40vh;
-    margin-left: 15px;
-    padding: 10px;
+    padding: 5px;
 }
 .m-lft{
     position: relative;
     left: 72%;
 }
+#aboutMeLabel {
+    margin-top: 20px;
+}
+
 
 /* ===== Scrollbar CSS =====
   /* Firefox */
@@ -160,7 +163,9 @@ body {
     position: relative;
     display: inline-block;
   }
-  
+  .form-width {
+    width: 300px !important;
+  }
   #dropdown-content {
     display: none;
     position: absolute;
@@ -230,3 +235,71 @@ body {
       border-radius: 0.375rem;
       transition: border-color .15s
   }
+
+  /* PERFIL  */
+  .container {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 115px 115px 115px 115px 127px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "Image Email usuario"
+    "Image fb ig"
+    "Image twitter password"
+    ".. Textarea Textarea";
+}
+  
+  .Image { 
+    grid-area: Image;
+ }
+  
+  .twitter { grid-area: twitter; }
+  
+  .Textarea { grid-area: Textarea; }
+  
+  .Email { grid-area: Email; }
+  
+  .Usuario { grid-area: Usuario; }
+  
+  .fb { grid-area: fb; }
+  
+  .ig { grid-area: ig; }
+  
+  .password { grid-area: password; }
+  
+
+  /* FIM PERFIL */
+
+  /* FILE UPLOAD STYLE */
+  .file-upload {
+    height: 16px;
+    width: 16px;
+    margin-left: 20%;
+    position: absolute;
+    margin-top: 2%;
+}
+  .file-upload input{
+	position:absolute;
+	height:32px;
+	width:16px;
+	left:0px;
+	top:0px;
+	background:transparent;
+	opacity:0;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);  
+}
+.file-upload img{
+	height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.btn-update-profile {
+    left: 75%;
+    position: relative;
+    top: 67%;
+    width: 200px;
+}
+  /* END FILE UPLOAD STYLE */

@@ -6,6 +6,7 @@ $Id = $_SESSION['id'];
 // SQL Get para pegar as informações do perfil
 
 $sql = "    SELECT *
+                  , p.Id as PostId
                   , p.Image as PostImage
                   , l.Image as UserImage
                   , p.CreatedAt as PostsCreatedAt
@@ -52,7 +53,7 @@ $record = $mysqli->query($sql);
             }
             echo '
         <br>
-            <div class="card ms-3 mb-3" style="width: 32rem;">
+            <div class="card ms-3 mb-3" id="'.$row['PostId'].'" style="width: 32rem;">
             <div class="img-div">
                 <img src="../image/Posts/' . $row['OwnerId'] . '/' . $row['PostImage'] . '" class="ms-3 img-fit img-thumbnail" alt="...">
             </div>
