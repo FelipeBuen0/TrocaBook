@@ -41,7 +41,7 @@ function ProfilePhotoExists($row, $id)
 
             <a href="../Index.php" class="text-left btn btn-danger bi bi-box-arrow-left"></a>
 
-            <h3 style="color: white;"> Atualizar o Perfil</h3>
+            <h3 style="color: white;">Meu perfil</h3>
         </div>
     </nav>
     <br>

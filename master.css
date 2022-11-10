@@ -303,3 +303,9 @@ body {
     width: 200px;
 }
   /* END FILE UPLOAD STYLE */
+
+.icon-align {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
