@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
-            <a class="text-white navbar-brand">TROCABOOK</a>
+            <a class="text-white navbar-brand">TROCABOOK <img src="res/favicon/android-chrome-192x192.png" style="width: 38px; height: 38px;" alt=""></a>
             
             <div id="dropdown">
             <div id="dropbtn" class="btn btn-warning"><img src="res/icons/bookmark-fill.svg " class="img-fit icon-fit"></div>

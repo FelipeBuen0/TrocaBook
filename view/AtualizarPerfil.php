@@ -31,6 +31,7 @@ function ProfilePhotoExists($row, $id)
     <!-- <script src="../script/script.js"></script> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../res/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../master.css">
     <title><?php echo $_SESSION['username'] ?></title>
 </head>
