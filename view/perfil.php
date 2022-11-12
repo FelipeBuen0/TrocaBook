@@ -20,7 +20,6 @@ if ($target) {
     $Email = $UserRow['Email'];
     $PhoneContact = $UserRow['PhoneNumber'];
     $TwitterAccount = $UserRow['TwitterAccount'];
-    $FaceBookAccount = $UserRow['FaceBookAccount'];
     $InstagramAccount = $UserRow['InstagramAccount'];
     $Content = $UserRow['Content'];
     $Image = $UserRow['Image'];
