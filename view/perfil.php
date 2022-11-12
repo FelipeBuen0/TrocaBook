@@ -3,10 +3,10 @@ include_once '../api/database/Connection.php';
 if (isset($_SESSION)) {
     session_start();
 }
-//a variável $target está armazenando o dado da queryString - URL. No caso será o Id do seu usuário.
+//a variável $target está armazenando o dado da queryString - URL. No caso será o nome do seu usuário.
 $target = $_GET['q'];
 if ($target == null) {
-    if ($_SESSION['id']!= null) {
+    if ($_SESSION['id'] != null) {
         return header('location: ../index.php');
     }
     return header('location: ../Login.php');
@@ -54,25 +54,26 @@ if ($target) {
         <!-- Imagem -->
         <div class="PostImage">
             <div class="profile-photo-contaier">
-                <img class="profile-photo" src="../image/ProfilePhoto/<?php echo $Image != null ? $targetId . '/' . $Image : "no_photo.png"?>">
-                <h1><?php echo $target?></h1>
+                <img class="profile-photo" src="../image/ProfilePhoto/<?php echo $Image != null ? $targetId . '/' . $Image : "no_photo.png" ?>">
+                <h1><?php echo $target ?></h1>
             </div>
         </div>
         <!-- Lugar do campo Instagram -->
         <div class="PostInstagram">
-            <h1>Contato:</h1>
-            <p name="Profile_Instagram"> <?php echo $InstagramAccount?></p>
+            <h1>Contato</h1>
+            <p name="Profile_Instagram"> Instagram - <?php echo $InstagramAccount ?></p>
         </div>
         <!-- Lugar do campo Twitter-->
         <div class="PostTwitter">
-            <p name="Profile_twitter"> <?php echo $TwitterAccount?></p>
+            <p name="Profile_twitter"> Twitter - <?php echo $TwitterAccount ?></p>
+            <!-- Lugar do campo Telefone -->
+            <div class="PostPhoneNumber">
+                <p name="PostPhoneNumber"> Celular - <?php echo $PhoneContact ?></p>
+            </div>
         </div>
-        <!-- Lugar do campo Telefone -->
-        <div class="PostPhoneNumber">
-            <p name="PostPhoneNumber"> <?php echo $PhoneContact?></p>
-        </div>
+
         <div class="PostContent">
-            <p name="PostContent"><?php echo $Content?></p>
+            <p name="PostContent"><?php echo $Content ?></p>
         </div>
     </div>
 

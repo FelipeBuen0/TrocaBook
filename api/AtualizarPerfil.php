@@ -35,8 +35,10 @@ if (isset($_POST['submit'])) {
     }
     if (isset($_POST['update_textarea'])) {
         $Content = mysqli_real_escape_string($mysqli, $_POST['update_textarea']);
-        $sql = "UPDATE LoginCredentials SET Content = '$Content' WHERE Id = $Id";
-        $result = $mysqli->query($sql) or die('Erro');
+        if (strlen($Content)) {
+            $sql = "UPDATE LoginCredentials SET Content = '$Content' WHERE Id = $Id";
+            $result = $mysqli->query($sql) or die('Erro');
+        }
     }
     //Variáveis dos campos obtidos da view "AtualizarPerfil.php"
     $user = mysqli_real_escape_string($mysqli, $_POST['update_username']);

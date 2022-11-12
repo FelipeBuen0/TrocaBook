@@ -15,7 +15,6 @@ if (isset($_POST['login'])) {
         $Password = sha1($Password);
         if ( $Password != $row['Password']) {
             echo '<p>Senha incorreta!</p>';
-            echo $Password . '-' . $row['Password'];
             return;
         }
         if (!isset($_SESSION)) {

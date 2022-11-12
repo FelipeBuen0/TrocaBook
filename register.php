@@ -32,7 +32,6 @@ if (isset($_POST['user'])) {
 
     $result = $mysqli->query($sql) or die('Falha no sistema, tente novamente mais tarde!');
     if (!$result->num_rows > 0) {
-        // $Password = password_hash($Plain_Password, PASSWORD_DEFAULT); TODO: Criptografia de senhas
         strtolower($email);
         $Password = base64_encode($Password);
         $Password = sha1($Password);

@@ -1,6 +1,6 @@
 <?php
     include_once 'api/database/Connection.php';
-    $SQL = 'Select *, posts.Id as PostId, posts.CreatedAt as PostCreatedAt, posts.Image as PostImage, logincredentials.Image as UserImage from posts inner Join logincredentials on logincredentials.Id = posts.OwnerId order by posts.Id desc';
+    $SQL = 'Select *, posts.Id as PostId, posts.CreatedAt as PostCreatedAt, posts.Image as PostImage, logincredentials.Image as UserImage from posts inner Join logincredentials on logincredentials.Id = posts.OwnerId and Troca = 0 order by posts.Id desc';
     $record = $mysqli->query($SQL) or die ('Falha ao se conectar ao servidor!');
     while ($row = $record->fetch_assoc()) {
         if (!$row['Image'] == null) {
@@ -10,7 +10,7 @@
         }
         echo '
         <br>
-        <div class="card container" id="'. $row['PostId'].'" style="width: 32rem; cursor: pointer;" onclick="AddNewProfileView(`'.$row['OwnerName'].'`)">
+        <div class="card posting container" id="'. $row['PostId'].'" onclick="AddNewProfileView(`'.$row['OwnerName'].'`)">
         <div class="img-div">
             <img src="image/Posts/' . $row['OwnerId'] . '/' . $row['PostImage'] . '" class="ms-1 img-fit img-thumbnail" alt="...">
         </div>
@@ -29,21 +29,6 @@
         <script type="text/javascript">
         function AddNewProfileView (OwnerName) {
             location.replace(`view/Perfil.php?q=${OwnerName}`);
-            // debugger
-            // let dados = JSON.stringify(OwnerName);
-            // $.ajax({
-            //   url: "view/Perfil.php",
-            //   type: "POST",
-            //   data: {data: dados},
-            //   success: function(result){
-            //     location.replace("view/Perfil.php");
-            //     console.log(result);
-            //   },
-            //   error: function(jqXHR, textStatus, errorThrown) {
-            //     alert("Retorno caso algum erro ocorra");
-            //     console.log( errorThrown, jqXHR, textStatus)
-            //   }
-            // });
       }
         </script>
         ';

@@ -382,7 +382,12 @@ body {
     grid-template-rows: 100px 100px 100px;
     gap: 0px 20px;
     grid-auto-flow: row;
-    grid-template-areas: "PostImage PostFacebook PostInstagram" "PostImage .. PostTwitter" ".. PostContent PostPhoneNumber";
+    grid-template-areas: "PostImage .. PostInstagram" "PostImage .. PostTwitter" ".. PostContent PostPhoneNumber";
+}
+.ProfileContainer p {
+    margin: 0;
+    text-align: start;
+    padding: 10px;
 }
 
 .PostImage {
@@ -402,13 +407,21 @@ body {
 .PostTwitter {
     grid-area: PostTwitter;
 }
+.PostTwitter p {
+}
 
 .PostInstagram {
     grid-area: PostInstagram;
 }
+.PostInstagram h1 {
+    background-color: #858585;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-weight: 100;
+}
 
 .PostPhoneNumber {
     grid-area: PostPhoneNumber;
+    border-left: 2px solid #858585;
 }
 .PostContent {
     grid-area: PostContent;
@@ -416,8 +429,35 @@ body {
 .PostContent p{
     position: absolute;
     text-align: justify;
+    padding: 0;
     left: 25%;
     top: 30%;
     width: 35%;
 }
+
+#btn-troca{
+    background-color: seagreen;
+    font-family: roboto;
+    border: none;
+    color: whitesmoke;
+    cursor: pointer;
+    margin-top: 5px;
+    border-radius: 5px;
+    height: 25px;
+    transition: opacity 0.2s ease;
+}
+#btn-troca:hover{
+    opacity: 0.7;
+}
 /* END Perfil.php STYLE */
+/* Some post configs  */
+.posting:hover {
+    width: 34rem;
+    box-shadow: 1px 1px 4px 1px grey;
+}
+.posting {
+    width: 32rem !important;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px whitesmoke ;
+    transition: box-shadow 0.2s ease;
+}

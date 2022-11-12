@@ -52,6 +52,15 @@ $record = $mysqli->query($sql);
             } else {
                 $image = "no_photo.png";
             }
+            if ($row['Troca']) {
+                $message = '<div class="Trocado">
+                                <p><em>Trocado!</em></p>
+                            </div>';
+            } else {
+                $message ='<div class="Troca">
+                                <button id="btn-troca" onclick="onBtnTrocaClick('.$row["PostId"].')">Trocabook! </button>
+                            </div>';
+            }
             echo '
         <br>
             <div class="card ms-3 mb-3" id="'.$row['PostId'].'" style="width: 32rem;">
@@ -64,12 +73,25 @@ $record = $mysqli->query($sql);
             </div>
                 <div class="card-footer text-muted d-flex justify-content-between">
                     <p class="data-hora me-auto"><em>' . $row['PostsCreatedAt'] . '</em></p>
-                    <p class="data-hora pe-2"><em> Publicado por ' . $row['OwnerName'] . '</em></p>
-                    <div class="molde-icone-usuario">
-                        <img src="../image/ProfilePhoto/' . $image . '" class="mx-auto" id="foto-usuario"> 
-                    </div>
+                    '.$message.'
                 </div>
             </div>
+            <script type="text/javascript">
+                function onBtnTrocaClick (a) {
+                    $.ajax({
+                          url: "../api/Troca.php",
+                          type: "POST",
+                          data: {data: a},
+                          success: function(result){
+                            location.reload(true);
+                          },
+                          error: function(jqXHR, textStatus, errorThrown) {
+                            alert("Retorno caso algum erro ocorra");
+                            console.log( errorThrown, jqXHR, textStatus)
+                          }
+                        });
+                }
+            </script>
         ';
         }
         ?>

@@ -12,23 +12,20 @@
         $select = mysqli_real_escape_string($mysqli, $_POST['select']);
         $sql = "INSERT INTO posts (OwnerId, OwnerName, content, CreatedAt, Image, Title, Genre) VALUE ($id, '$username','$content', NOW(), '$filename', '$title', '$select') ";
         if ($mysqli->query($sql)) {
+            echo 'passou aqui';
             return true;
         } else {
+            echo 'passou aqui';
             return false;
         }
-    }
-    function append_string($str, $str_) {
-        $str .= $str_;
-        return $str;
     }
 
     function formatarImagem() {
         $id = $_SESSION['id'];
-        $username = $_SESSION['username'];
         if (!empty($filename = $_FILES['image']['name'])) {
             //Obtendo o valor da imagem.
             $filename = $_FILES['image']['name'];
-            $fileType = pathinfo($filename, PATHINFO_EXTENSION);
+            $fileType = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
             $allowTypes = array('jpg', 'png', 'jpeg');
             
             if (in_array($fileType, $allowTypes)) {

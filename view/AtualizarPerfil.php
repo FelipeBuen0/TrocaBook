@@ -72,17 +72,17 @@ function ProfilePhotoExists($row, $id)
             <!-- Lugar do campo Instagram -->
             <div class="ig">
                 <label for="update_Instagram" class="form-label">Instagram: </label>
-                <input type="text" class="form-control " name="update_Instagram" id="update_Instagram" placeholder="Ex: https://www.instagram.com/TrocaBook/" value="<?php echo $row['InstagramAccount'] ?>">
+                <input type="url" class="form-control " name="update_Instagram" id="update_Instagram" placeholder="Ex: https://www.instagram.com/TrocaBook/" value="<?php echo $row['InstagramAccount'] ?>">
             </div>
             <!-- Lugar do campo Twitter-->
             <div class="twitter">
                 <label for="update_twitter" class="form-label">Twitter:</label>
-                <input type="text" class="form-control " name="update_twitter" id="update_twitter" placeholder="Ex: https://twitter.com/Tr0caBook" value="<?php echo $row['TwitterAccount'] ?>">
+                <input type="url" class="form-control " name="update_twitter" id="update_twitter" placeholder="Ex: https://twitter.com/Tr0caBook" value="<?php echo $row['TwitterAccount'] ?>">
             </div>
             <!-- Lugar do campo Telefone -->
             <div class="PhoneNumber">
                 <label for="update_phoneNumber" class="form-label">Celular: </label>
-                <input type="Phone" class="form-control" name="update_phoneNumber" placeholder="(19) 99999-9999" value="<?php echo $row['PhoneNumber'] ?>">
+                <input type="Tel" class="form-control" name="update_phoneNumber" placeholder="(19) 99999-9999" value="<?php echo $row['PhoneNumber'] ?>">
             </div>
             <!-- Lugar do campo Textarea - descrição do perfil -->
             <div class="Textarea">
