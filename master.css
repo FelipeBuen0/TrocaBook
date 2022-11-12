@@ -308,17 +308,21 @@ body {
     grid-area: OldPassword;
 }
 
+.update_submit:hover {
+    opacity: 0.8;
+}
 .update_submit {
     margin-top: 10px;
     background-color: orange;
     left: 82%;
     position: absolute;
-    border: 1px solid grey;
+    border: 1px solid orange;
     border-radius: 5px;
     padding: 6px;
-    color: black;
+    color: whitesmoke;
     font-family: cursive;
     font-weight: 100;
+    transition: opacity 0.2s ease;
 }
 
 /* FIM PERFIL */
@@ -460,4 +464,14 @@ body {
     cursor: pointer;
     box-shadow: 1px 1px 1px 1px whitesmoke ;
     transition: box-shadow 0.2s ease;
+}
+/* Some post configs END  */
+/* bg-fill*/
+.bg-fill {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
 }

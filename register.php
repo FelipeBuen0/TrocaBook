@@ -22,7 +22,8 @@ if (isset($_POST['user'])) {
     $user = mysqli_real_escape_string($mysqli, $_POST['user']);
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
     $Password = mysqli_real_escape_string($mysqli, $_POST['Password']);
-    $SecurityQuestion = $_POST['SecurityQuestion'];
+    $Telefone = mysqli_real_escape_string($mysqli, $_POST['Telefone']);
+    $SecurityQuestion = mysqli_real_escape_string($mysqli, $_POST['SecurityQuestion']);
     $SecurityAnswer = mysqli_real_escape_string($mysqli, $_POST['SecurityAnswer']);
     $sql = "SELECT *
               FROM LoginCredentials
@@ -42,6 +43,7 @@ if (isset($_POST['user'])) {
                                    ,Password
                                    ,SecurityQuestion
                                    ,SecurityAnswer
+                                   ,PhoneNumber
                                    ,CreatedAt
                                    )
                             VALUES (
@@ -50,6 +52,7 @@ if (isset($_POST['user'])) {
                                    ,'$Password'
                                    ,'$SecurityQuestion'
                                    ,'$SecurityAnswer'
+                                   ,'$Telefone'
                                    , NOW()
                                    );";
 
@@ -110,8 +113,8 @@ if (isset($_POST['user'])) {
             <input name="user" type="text" class="form-control" required placeholder="Digite seu nome de usuário. Ex: Trocabook">
             <br>
             <input name="Password" type="Password" class="form-control" required placeholder='Digite sua senha. Ex: Troc@b00k@'>
-            <!-- <br> -->
-            <!-- <input name="Telefone" type="phone" class="form-control" required placeholder='Digite seu número Ex: 19 99999-9999'> -->
+            <br>
+            <input name="Telefone" type="tel" class="form-control" required placeholder='Digite seu número Ex: 19 99999-9999'>
             <br>
             <div>
                 <select name="SecurityQuestion" class="form-select" required>

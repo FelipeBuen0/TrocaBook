@@ -1,16 +1,20 @@
 <?php
-    include_once 'api/database/Connection.php';
-    $SQL = 'Select *, posts.Id as PostId, posts.CreatedAt as PostCreatedAt, posts.Image as PostImage, logincredentials.Image as UserImage from posts inner Join logincredentials on logincredentials.Id = posts.OwnerId and Troca = 0 order by posts.Id desc';
-    $record = $mysqli->query($SQL) or die ('Falha ao se conectar ao servidor!');
-    while ($row = $record->fetch_assoc()) {
-        if (!$row['Image'] == null) {
-            $image = $row['OwnerId'] . '/' . $row['UserImage'];
-        } else {
-            $image = "no_photo.png";
-        }
-        echo '
+include_once 'api/database/Connection.php';
+$SQL = 'Select *, posts.Id as PostId, posts.CreatedAt as PostCreatedAt, posts.Image as PostImage, logincredentials.Image as UserImage from posts inner Join logincredentials on logincredentials.Id = posts.OwnerId and Troca = 0 order by posts.Id desc';
+$record = $mysqli->query($SQL) or die('Falha ao se conectar ao servidor!');
+if ($record->num_rows == 0) {
+    echo '<img class="bg-fill" src="image/bg/trocabook-blank.jpg" alt="">';
+    return;
+}
+while ($row = $record->fetch_assoc()) {
+    if (!$row['Image'] == null) {
+        $image = $row['OwnerId'] . '/' . $row['UserImage'];
+    } else {
+        $image = "no_photo.png";
+    }
+    echo '
         <br>
-        <div class="card posting container" id="'. $row['PostId'].'" onclick="AddNewProfileView(`'.$row['OwnerName'].'`)">
+        <div class="card posting container" id="' . $row['PostId'] . '" onclick="AddNewProfileView(`' . $row['OwnerName'] . '`)">
         <div class="img-div">
             <img src="image/Posts/' . $row['OwnerId'] . '/' . $row['PostImage'] . '" class="ms-1 img-fit img-thumbnail" alt="...">
         </div>
@@ -32,5 +36,4 @@
       }
         </script>
         ';
-    }
-?>
+}
