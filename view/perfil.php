@@ -1,26 +1,35 @@
-<?PHP
-include_once '../api/protect.php';
-require_once '../api/database/Connection.php';
-
-    $Id = $_SESSION['id'];
-    $username = $_SESSION['username'];
-    // SQL Get para pegar as informações do perfil
-    $sql = "SELECT * 
-              FROM LoginCredentials
-             WHERE Id = $Id";
-
-    $record = $mysqli -> query($sql);
-    $row = $record->fetch_assoc();
-
-    if ($row['Image']) {
-        $image = $row['Image'];
+<?php
+include_once '../api/database/Connection.php';
+if (isset($_SESSION)) {
+    session_start();
+}
+//a variável $target está armazenando o dado da queryString - URL. No caso será o Id do seu usuário.
+$target = $_GET['q'];
+if ($target == null) {
+    if ($_SESSION['id']!= null) {
+        return header('location: ../index.php');
     }
-    else
-    {
-        $image = "no_photo.png"; ;
-    }
+    return header('location: ../Login.php');
+}
+if ($target) {
+    $sql = "SELECT * FROM logincredentials WHERE Username = '$target';";
+    $UserQuery = $mysqli->query($sql);
+    $UserRow = $UserQuery->fetch_assoc();
+    //Mapeando todos os dados do usuario para posteriormente printar na tela.
+    $targetId = $UserRow['Id'];
+    $Email = $UserRow['Email'];
+    $PhoneContact = $UserRow['PhoneNumber'];
+    $TwitterAccount = $UserRow['TwitterAccount'];
+    $FaceBookAccount = $UserRow['FaceBookAccount'];
+    $InstagramAccount = $UserRow['InstagramAccount'];
+    $Content = $UserRow['Content'];
+    $Image = $UserRow['Image'];
+}
+if ($target) {
+    $SQL = "SELECT * FROM posts WHERE  OwnerId = '$targetId' AND Troca = 0";
+    $PostQuery = $mysqli->query($SQL);
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,50 +37,79 @@ require_once '../api/database/Connection.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="../script/script.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../master.css">
-    <title><?php echo $_SESSION['username'] ?></title>
+    <title></title>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
-
-            <a href="../Index.php" class="text-left btn btn-danger bi bi-box-arrow-left"></a>
-
-            <h3 class="h1-segoe"> Atualizar o Perfil</h3>
+            <a href="../Index.php" class="text-left btn btn-warning bi bi-box-arrow-left"></a>
         </div>
     </nav>
-    <br>
-    <br>
-    <form action="../api/AtualizarPerfil.php" method="POST" enctype = "multipart/form-data" class="d-flex justify-content-center container bd-solid-black">
-        <div class="mb">
-            <br>
+
+    <div class="ProfileContainer">
+        <!-- Imagem -->
+        <div class="PostImage">
             <div class="profile-photo-contaier">
-                <img class="profile-photo" src="../image/ProfilePhoto/<?php echo $username.$Id.'/'.$image ?>">
+                <img class="profile-photo" src="../image/ProfilePhoto/<?php echo $Image != null ? $targetId . '/' . $Image : "no_photo.png"?>">
+                <h1><?php echo $target?></h1>
             </div>
-            <br>
-            <input class="form-control form-control-sm" name="image" type="file">
-            <br>
-            <label for="update_email" class="wd-med form-label">Email</label>
-            <input type="email" class="form-control" name="email_update" id="update_email" value="<?php echo $row['Email']?>">
-            <br>
-            <label for="update_username" class="wd-med form-label">Nome do usuário</label>
-            <input type="text" class="form-control" name="user_update" id="update_username" value="<?php echo $row['Username']?>">
-            <br>
-            <label for="update_Password" class="wd-med form-label">Senha</label>
-            <input type="Password" class="form-control" name="Password_update" id="update_Password">
-            <br>
-            <label for="update_Password" class="wd-med form-label">Senha</label>
-            <input type="Password" class="form-control" name="Password_update" id="update_Password">
-            <br>
-            <input type="submit" value="Atualizar"  name="update" id='update_submit' class="btn btn-danger opacity-80">
-            <br>
-            <br>
         </div>
-    </form>
+        <!-- Lugar do campo Instagram -->
+        <div class="PostInstagram">
+            <h1>Contato:</h1>
+            <p name="Profile_Instagram"> <?php echo $InstagramAccount?></p>
+        </div>
+        <!-- Lugar do campo Twitter-->
+        <div class="PostTwitter">
+            <p name="Profile_twitter"> <?php echo $TwitterAccount?></p>
+        </div>
+        <!-- Lugar do campo Telefone -->
+        <div class="PostPhoneNumber">
+            <p name="PostPhoneNumber"> <?php echo $PhoneContact?></p>
+        </div>
+        <div class="PostContent">
+            <p name="PostContent"><?php echo $Content?></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- A partir da TAG abaixo, o código irá representar os posts contidos no perfil do usuário. -->
+    <div class="d-flex flex-row flex-wrap ">
+        <?php
+        while ($PostRow = $PostQuery->fetch_assoc()) {
+            if (!$Image == null) {
+                $UserImg = $targetId . '/' . $Image;
+            } else {
+                $UserImg = "no_photo.png";
+            }
+            $PostStructure = '
+            <br>
+            <div class="card ms-3 mb-3 mt-3" id="' . $PostRow['Id'] . '" style="width: 32rem;">
+            <div class="img-div">
+                <img src="../image/Posts/' . $PostRow['OwnerId'] . '/' . $PostRow['Image'] . '" class="ms-3 img-fit img-thumbnail" alt="...">
+            </div>
+            <div class="card-body img-thumbnail">
+                <h5 class="card-title">' . $PostRow['Title'] . '</h5>
+                <p class="card-text">' . $PostRow['content'] . '.</p>
+            </div>
+                <div class="card-footer text-muted d-flex justify-content-between">
+                    <p class="data-hora me-auto"><em>' . $PostRow['CreatedAt'] . '</em></p>
+                    <p class="data-hora pe-2"><em> Publicado por ' . $PostRow['OwnerName'] . '</em></p>
+                    <div class="molde-icone-usuario">
+                        <img src="../image/ProfilePhoto/' . $UserImg . '" class="mx-auto" id="foto-usuario"> 
+                    </div>
+                </div>
+            </div>
+            ';
+            echo $PostStructure;
+        }
+        ?>
+    </div>
 </body>
 
 </html>

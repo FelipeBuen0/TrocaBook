@@ -19,7 +19,6 @@ include('api/protect.php');
 </head>
 
 <body>
-    <!-- <div id="preloader"></div> -->
     <?php include_once('view/header.php');?>
     <?php include_once('view/CreatePost.php'); ?>
     <?php include_once('view/post.php'); ?>

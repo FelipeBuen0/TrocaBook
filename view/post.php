@@ -10,7 +10,7 @@
         }
         echo '
         <br>
-        <div class="card container" id="post-'. $row['PostId'].'" style="width: 32rem;">
+        <div class="card container" id="'. $row['PostId'].'" style="width: 32rem; cursor: pointer;" onclick="AddNewProfileView(`'.$row['OwnerName'].'`)">
         <div class="img-div">
             <img src="image/Posts/' . $row['OwnerId'] . '/' . $row['PostImage'] . '" class="ms-1 img-fit img-thumbnail" alt="...">
         </div>
@@ -26,6 +26,26 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+        function AddNewProfileView (OwnerName) {
+            location.replace(`view/Perfil.php?q=${OwnerName}`);
+            // debugger
+            // let dados = JSON.stringify(OwnerName);
+            // $.ajax({
+            //   url: "view/Perfil.php",
+            //   type: "POST",
+            //   data: {data: dados},
+            //   success: function(result){
+            //     location.replace("view/Perfil.php");
+            //     console.log(result);
+            //   },
+            //   error: function(jqXHR, textStatus, errorThrown) {
+            //     alert("Retorno caso algum erro ocorra");
+            //     console.log( errorThrown, jqXHR, textStatus)
+            //   }
+            // });
+      }
+        </script>
         ';
     }
 ?>

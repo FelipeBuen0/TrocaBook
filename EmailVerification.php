@@ -4,16 +4,17 @@ require('api/database/Connection.php');
 if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
 
-    $sql = "SELECT * FROM `logincredentials` WHERE email = '$email'";
+    $sql = "SELECT email FROM `logincredentials` WHERE email = '$email'";
     $obj = $mysqli->query($sql);
     $records = $obj->fetch_assoc();
-    echo'the thing passed heer';
     if ($obj->num_rows > 0) {
         if (!isset($_SESSION)) {
             session_start();
         }
         $_SESSION['email'] = $email;
-        header('location: ForgotPassword.php');
+        return header('location: ForgotPassword.php');
+    } else {
+        echo "<div class='AlertEmail'>E-mail não encontrado!... Tente novamente</div>";
     }
 }
 

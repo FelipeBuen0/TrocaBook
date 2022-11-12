@@ -14,7 +14,8 @@ $sql = "    SELECT *
               FROM POSTS as p
         INNER JOIN logincredentials as l
              WHERE p.OwnerId = l.Id
-               AND l.Id = $Id;";
+               AND l.Id = $Id
+          ORDER BY p.Id DESC";
 
 $record = $mysqli->query($sql);
 ?>
@@ -37,14 +38,14 @@ $record = $mysqli->query($sql);
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
 
-            <a href="../Index.php" class="text-left btn btn-danger bi bi-box-arrow-left"></a>
+            <a href="../Index.php" class="text-left btn btn-warning bi bi-box-arrow-left"></a>
 
-            <h3 class="fs-1" style="color: white;"> Meus Livros</h3>
+            <h3 style="color: white; font-weight: 100"> Meus Livros</h3>
         </div>
     </nav>
     <br>
     <br>
-    <div class="d-flex flex-row flex-wrap ms-5">
+    <div class="d-flex flex-row flex-wrap">
         <?php while ($row = $record->fetch_assoc()) {
             if (!$row['Image'] == null) {
                 $image = $row['OwnerId'] . '/' . $row['UserImage'];

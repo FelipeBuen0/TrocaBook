@@ -18,6 +18,3 @@
             </div>
         </div>
     </nav>
-    <!-- <div class="container-fluid">
-        <a class="nav-link active">Olá, <?php //echo $_SESSION['username']; ?>! O dia está lindo para ler hoje!</a>
-    </div> -->

@@ -2,7 +2,6 @@
     require_once 'api/database/Connection.php';
     if (!isset($_SESSION)) {
         session_start();
-        // header('Location: EmailVerification.php');
     }
     $message = '';
     $email = $_SESSION['email'];
@@ -14,15 +13,19 @@
         $SecurityPassword = mysqli_real_escape_string($mysqli, $_POST['SecurityPassword']);
         $ConfirmSecurityPassword = mysqli_real_escape_string($mysqli, $_POST['ConfirmSecurityPassword']);
         if ($SecurityPassword != $ConfirmSecurityPassword) {
-            return $message = "<h1>As senhas não são iguais, tente novamente!</h1>";
+            echo "<div>As senhas não são iguais, tente novamente!</div>";
+            return;
         }
 
-        if ($anwser == $records['SecurityAnswer']) {
+        if ($anwser != $records['SecurityAnswer']) {
+            echo "<div>Essa não é a sua resposta de segurança, tente novamente!</div>";
+        } else {
             $SecurityPassword = base64_encode($SecurityPassword);
             $SecurityPassword = sha1($SecurityPassword);
+            echo "<div>Sua resposta atualizada com sucesso! Sua senha agora é: ".$SecurityPassword."</div>";
             $sql = "UPDATE logincredentials SET Password = '$SecurityPassword' WHERE email = '$email'";
             $result = $mysqli->query($sql);
-            return $result == true ? header('Location: Login.php') : $message = "Houve um problema com o bando de dados, tente novamente mais tarde.";
+            return $result ? header('Location: Login.php') : $message = "Houve um problema com o bando de dados, tente novamente mais tarde.";
         }    
     }
 ?>

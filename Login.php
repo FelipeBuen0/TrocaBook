@@ -14,7 +14,8 @@ if (isset($_POST['login'])) {
         $Password = base64_encode($Password);
         $Password = sha1($Password);
         if ( $Password != $row['Password']) {
-            echo '<p class="bg-warning">Usuário ou senha não identificados';
+            echo '<p>Senha incorreta!</p>';
+            echo $Password . '-' . $row['Password'];
             return;
         }
         if (!isset($_SESSION)) {
@@ -26,7 +27,7 @@ if (isset($_POST['login'])) {
         header('Location: index.php');
         return;
     }
-    echo '<p class="bg-warning">Usuário ou senha não identificados';
+    echo "Usuário não cadastrado";
     return ;
 }
 ?>

@@ -1,24 +1,21 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<div id="content">
-        <div class="container">
-            <br>
-            <form action="" method="POST" class="form container" style="width: 40rem;">
-                <h1>Olá, leitor!</h1>
-                <p>Vimos que você está com dificuldades para se logar, isto não será um problema... Preencha o e-mail e redefina sua senha! <br><br> - Atenciosamente, Equipe Trocabook!</p>
-                <br>
-                <input name="email" type="password" class="email" required placeholder="Digite seu e-mail">
-                <br>
-                <input name="submit" type="submit" class="btn btn-outline-primary" value="Confirmar">
-            </form>
-        </div>
-    </div>
-</body>
-</html> -->
+$user = mysqli_real_escape_string($mysqli, $_POST['update_username']);
+    $email = mysqli_real_escape_string($mysqli, $_POST['update_email']);
+    $Password = mysqli_real_escape_string($mysqli, $_POST['update_Password']);
+    $OldPassword = mysqli_real_escape_string($mysqli, $_POST['update_OldPassword']);
+    $Instagram = mysqli_real_escape_string($mysqli, $_POST['update_Instagram']);
+    $FaceBook = mysqli_real_escape_string($mysqli, $_POST['update_Facebook']);
+    $Twitter = mysqli_real_escape_string($mysqli, $_POST['update_twitter']);
+    $PhoneNumber = mysqli_real_escape_string($mysqli, $_POST['update_phoneNumber']);
+    $Content = mysqli_real_escape_string($mysqli, $_POST['update_textarea']);
+
+    $post = array($user, $email, $Password, $Instagram, $FaceBook, $Twitter, $PhoneNumber, $Content);if (strlen($Password)) {
+        $Password = base64_encode($Password);
+        $Password = sha1($Password);
+        $OldPassword = base64_encode($OldPassword);
+        $OldPassword = sha1($OldPassword);
+        if ($Password == $OldPassword) {
+            echo "<h3>As senhas são compátiveis...</h3> <a href='../view/AtualizarPerfil.php'>Voltar</a>";
+            return;
+        }
+        $sql = "UPDATE LoginCredentials SET Password = '$Password' WHERE Id = $Id";
+    }
