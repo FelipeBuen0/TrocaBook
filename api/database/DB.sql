@@ -2,7 +2,7 @@ CREATE DATABASE books;
 
 USE books;
 
-CREATE TABLE IF NOT EXISTS LoginCredentials 
+CREATE TABLE IF NOT EXISTS Users 
 (
   Id int not null auto_increment primary key,
   Email varchar(120) not null,
@@ -14,9 +14,10 @@ CREATE TABLE IF NOT EXISTS LoginCredentials
   InstagramAccount varchar(120) not null,
   SecurityQuestion varchar(120) not null,
   SecurityAnswer varchar(120) not null,
+  Description varchar(180) not null,
+  Image varchar(50),
   CreatedAt datetime not null,
-  UpdatedAt datetime,
-  Image varchar(50)
+  UpdatedAt datetime
 );
 
 CREATE TABLE IF NOT EXISTS Posts

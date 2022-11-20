@@ -5,7 +5,7 @@
     }
     $message = '';
     $email = $_SESSION['email'];
-    $sql = "SELECT SecurityAnswer, SecurityQuestion FROM logincredentials WHERE email = '$email'";
+    $sql = "SELECT SecurityAnswer, SecurityQuestion FROM Users WHERE email = '$email'";
     $result = $mysqli->query($sql);
     $records = $result->fetch_assoc();
     if (isset($_POST['submit'])) {
@@ -23,7 +23,7 @@
             $SecurityPassword = base64_encode($SecurityPassword);
             $SecurityPassword = sha1($SecurityPassword);
             echo "<div>Sua resposta atualizada com sucesso! Sua senha agora é: ".$SecurityPassword."</div>";
-            $sql = "UPDATE logincredentials SET Password = '$SecurityPassword' WHERE email = '$email'";
+            $sql = "UPDATE Users SET Password = '$SecurityPassword' WHERE email = '$email'";
             $result = $mysqli->query($sql);
             return $result ? header('Location: Login.php') : $message = "Houve um problema com o bando de dados, tente novamente mais tarde.";
         }    

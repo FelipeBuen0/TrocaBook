@@ -4,7 +4,7 @@ if (isset($_POST['login'])) {
     $login = mysqli_real_escape_string($mysqli, $_POST['login']);
     $Password = mysqli_real_escape_string($mysqli, $_POST['Password']);
     $sql = "SELECT Id, email, Username, Password
-                  FROM LoginCredentials
+                  FROM Users
                  WHERE Username = '$login' or Email = '$login'";
     $result = $mysqli->query($sql) or die('Falha no sistema, tente novamente mais tarde!');
 

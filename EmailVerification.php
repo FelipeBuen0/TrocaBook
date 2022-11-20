@@ -4,7 +4,7 @@ require('api/database/Connection.php');
 if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($mysqli, $_POST['email']);
 
-    $sql = "SELECT email FROM `logincredentials` WHERE email = '$email'";
+    $sql = "SELECT email FROM `Users` WHERE email = '$email'";
     $obj = $mysqli->query($sql);
     $records = $obj->fetch_assoc();
     if ($obj->num_rows > 0) {

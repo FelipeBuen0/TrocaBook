@@ -5,7 +5,7 @@ require_once '../api/database/Connection.php';
 $Id = $_SESSION['id'];
 // SQL Get para pegar as informações do perfil
 $sql = "SELECT * 
-          FROM LoginCredentials
+          FROM Users
          WHERE Id = $Id";
 
 $record = $mysqli->query($sql);
@@ -59,7 +59,7 @@ function ProfilePhotoExists($row, $id)
                 <div class="file-upload">
                     <img src="../res/icons/Edit.svg">
                     <!-- Seletor de imagem -->
-                    <input name="image" id="UploadImage" onchange="PreviewImage()" type="file">
+                    <input name="image" id="UploadImage" onchange="onPreviewImageChange()" type="file">
                 </div>
                 <div class="profile-photo-contaier">
                     <img class="profile-photo img-thumbnail" id="UploadPreview" src="../image/ProfilePhoto/<?php echo ProfilePhotoExists($row, $Id) ?>">

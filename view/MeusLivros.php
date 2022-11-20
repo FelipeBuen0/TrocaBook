@@ -12,7 +12,7 @@ $sql = "    SELECT *
                   , p.CreatedAt as PostsCreatedAt
 
               FROM POSTS as p
-        INNER JOIN logincredentials as l
+        INNER JOIN Users as l
              WHERE p.OwnerId = l.Id
                AND l.Id = $Id
           ORDER BY p.Id DESC";

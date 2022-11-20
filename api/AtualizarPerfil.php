@@ -2,7 +2,6 @@
 include_once 'database/Connection.php';
 include_once 'protect.php';
 $Id = $_SESSION['id'];
-$username = $_SESSION['username'];
 
 if (isset($_POST['submit'])) {
     if (!empty($_FILES['image']['name'])) {
@@ -15,7 +14,7 @@ if (isset($_POST['submit'])) {
             $filename = $_FILES['image']['name'];
             $tempname = $_FILES['image']['tmp_name'];
             $folder = "../image/ProfilePhoto/$Id/";
-            $sql = "UPDATE LoginCredentials 
+            $sql = "UPDATE Users 
                            SET Image = '$filename'
                          WHERE Id      = $Id";
 
@@ -36,7 +35,7 @@ if (isset($_POST['submit'])) {
     if (isset($_POST['update_textarea'])) {
         $Content = mysqli_real_escape_string($mysqli, $_POST['update_textarea']);
         if (strlen($Content)) {
-            $sql = "UPDATE LoginCredentials SET Content = '$Content' WHERE Id = $Id";
+            $sql = "UPDATE Users SET Content = '$Content' WHERE Id = $Id";
             $result = $mysqli->query($sql) or die('Erro');
         }
     }
@@ -44,20 +43,22 @@ if (isset($_POST['submit'])) {
     $user = mysqli_real_escape_string($mysqli, $_POST['update_username']);
     $email = mysqli_real_escape_string($mysqli, $_POST['update_email']);
     $Instagram = mysqli_real_escape_string($mysqli, $_POST['update_Instagram']);
-    $FaceBook = mysqli_real_escape_string($mysqli, $_POST['update_Facebook']);
     $Twitter = mysqli_real_escape_string($mysqli, $_POST['update_twitter']);
     $PhoneNumber = mysqli_real_escape_string($mysqli, $_POST['update_phoneNumber']);
     
 
-        $sql = "UPDATE LoginCredentials 
+        $sql = "UPDATE Users 
                    SET Email            = '$email'
                       ,Username         = '$user'
                       ,TwitterAccount   = '$Twitter'
                       ,InstagramAccount = '$Instagram'
-                      ,FaceBookAccount  = '$FaceBook'
                       ,PhoneNumber      = '$PhoneNumber'
                       ,UpdatedAt        =  NOW()
                  WHERE Id               =  $Id";
-    $result = $mysqli->query($sql) or die('Erro');
-    if ($result) header("location: ../view/AtualizarPerfil.php");
+    $mysqli->query($sql) or die('Erro');
+
+    $SQL_ = "UPDATE posts SET OwnerName = '$user',UpdatedAt=NOW() WHERE Id = $Id";
+    $_SESSION['username'] = $user;
+    $mysqli->query($SQL_) or die('Erro');
+    header('location: ../view/AtualizarPerfil.php');
 }

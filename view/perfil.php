@@ -12,21 +12,39 @@ if ($target == null) {
     return header('location: ../Login.php');
 }
 if ($target) {
-    $sql = "SELECT * FROM logincredentials WHERE Username = '$target';";
+    $sql = "SELECT * FROM Users WHERE Username = '$target';";
     $UserQuery = $mysqli->query($sql);
     $UserRow = $UserQuery->fetch_assoc();
     //Mapeando todos os dados do usuario para posteriormente printar na tela.
     $targetId = $UserRow['Id'];
     $Email = $UserRow['Email'];
     $PhoneContact = $UserRow['PhoneNumber'];
-    $TwitterAccount = $UserRow['TwitterAccount'];
-    $InstagramAccount = $UserRow['InstagramAccount'];
+    $TwitterAccount = validateSocialMedia($UserRow['TwitterAccount'], 'twitter');
+    $InstagramAccount = validateSocialMedia($UserRow['InstagramAccount'], 'instagram');
     $Content = $UserRow['Content'];
     $Image = $UserRow['Image'];
 }
 if ($target) {
     $SQL = "SELECT * FROM posts WHERE  OwnerId = '$targetId' AND Troca = 0";
     $PostQuery = $mysqli->query($SQL);
+}
+function validateSocialMedia($socialMedia, $socialMedia_) {
+    if (strLen($socialMedia == '')) {
+        return ;
+    }
+    $response = "";
+    switch ($socialMedia_) {
+        case 'instagram':
+            $response = '<p>Instagram - '. $socialMedia. '</p>';
+            break;
+        case 'twitter':
+            $response = '<p>Twitter - '.$socialMedia.'</p>';
+            break;
+        default:
+            $response = '';
+            break;
+    }
+    return $response;
 }
 ?>
 <!DOCTYPE html>
@@ -61,11 +79,11 @@ if ($target) {
         <!-- Lugar do campo Instagram -->
         <div class="PostInstagram">
             <h1>Contato</h1>
-            <p name="Profile_Instagram"> Instagram - <?php echo $InstagramAccount ?></p>
+            <?php echo $InstagramAccount ?>
         </div>
         <!-- Lugar do campo Twitter-->
         <div class="PostTwitter">
-            <p name="Profile_twitter"> Twitter - <?php echo $TwitterAccount ?></p>
+            <?php echo$TwitterAccount ?>
             <!-- Lugar do campo Telefone -->
             <div class="PostPhoneNumber">
                 <p name="PostPhoneNumber"> Celular - <?php echo $PhoneContact ?></p>
@@ -77,8 +95,7 @@ if ($target) {
         </div>
     </div>
 
-    <hr>
-
+    <br> 
     <!-- A partir da TAG abaixo, o código irá representar os posts contidos no perfil do usuário. -->
     <div class="d-flex flex-row flex-wrap ">
         <?php

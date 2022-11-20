@@ -13,15 +13,17 @@
         <!-- Aonde localiza os inputs e os campos para enviar pro banco de dados e preencher a tabela posts -->
         <div class="custom-bg">
           <!-- form-control é uma variável do framework bootstrap que estiliza o formulário de maneira rápida -->
-            <input id="UploadImage" class="form-control form-control-sm" name="image" type="file" onchange ="PreviewImage()" required>
+            <p id="fileAlert"></p>
+            <input id="UploadImage" class="form-control form-control-sm" name="image" type="file" onchange ="onPreviewImageChange()" required>
             <!-- img-div mantém a imagem contida na div, logo se ela for maior do que o tamanho da div, ela mesmo assim assumirá o tamanho programado. -->
             <div class="img-div">
               <!-- mx-auto, img-thumbnail são variáveis do bootstrap.css que permite uma visão mais limpa da imagem e também sua posição no meio do forms. -->
                 <img class="mx-auto img-fit img-thumbnail" id="UploadPreview">
             </div>
-            <input type="text" class="form-control" name="title" id="title_post" required placeholder="Insira o título da publicação aqui...">
+            <p id="titleAlert"></p>
+            <input type="text" class="form-control" name="title" id="title_post" required placeholder="Insira o título da publicação aqui..." onkeyup="onTitleKeyUp()">
             <br>
-            <textarea class="form-control" name="content" id="Content_post" required placeholder="Insira o conteúdo da publicação aqui..."></textarea>
+            <textarea class="form-control" name="content" id="Content_post"  placeholder="Insira o conteúdo da publicação aqui..."></textarea>
             <br>
             <!-- O Select é a ferramenta que me permite escolher entre os gêneros disponíveis -->
             <select name="select" class="form-select" required>

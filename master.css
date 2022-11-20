@@ -35,7 +35,7 @@ body {
     padding: 0px;
     overflow-x: hidden;
 }
-
+/* Init Post */
 .molde-icone-usuario {
     position: relative;
     width: 35px;
@@ -82,7 +82,21 @@ body {
     height: 14px;
     width: 14px;
 }
-
+/* END Post */
+/* INIT Create Post */
+#fileAlert {
+    display: none;
+    color: tomato;
+    font-size: 12px;
+    margin: 0;
+}
+#titleAlert {
+    display: none;
+    color: tomato;
+    font-size: 12px;
+    margin: 0;
+}
+/* END Create Post */
 .plus-center {
     margin-top: 6px;
     margin-left: 6px;

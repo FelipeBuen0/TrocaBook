@@ -1,6 +1,6 @@
 <?php
 include_once 'api/database/Connection.php';
-$SQL = 'Select *, posts.Id as PostId, posts.CreatedAt as PostCreatedAt, posts.Image as PostImage, logincredentials.Image as UserImage from posts inner Join logincredentials on logincredentials.Id = posts.OwnerId and Troca = 0 order by posts.Id desc';
+$SQL = 'Select *, posts.Id as PostId, posts.CreatedAt as PostCreatedAt, posts.Image as PostImage, Users.Image as UserImage from posts inner Join Users on Users.Id = posts.OwnerId and Troca = 0 order by posts.Id desc';
 $record = $mysqli->query($SQL) or die('Falha ao se conectar ao servidor!');
 if ($record->num_rows == 0) {
     echo '<img class="bg-fill" src="image/bg/trocabook-blank.jpg" alt="">';
@@ -20,7 +20,7 @@ while ($row = $record->fetch_assoc()) {
         </div>
         <div class="card-body img-thumbnail">
             <h5 class="card-title">' . $row['Title'] . '</h5>
-            <p class="card-text">' . $row['content'] . '.</p>
+            <p class="card-text">' . $row['content'] . '</p>
         </div>
             <div class="card-footer text-muted d-flex justify-content-between">
                 <p class="data-hora me-auto"><em>' . $row['PostCreatedAt'] . '</em></p>

@@ -26,7 +26,7 @@ if (isset($_POST['user'])) {
     $SecurityQuestion = mysqli_real_escape_string($mysqli, $_POST['SecurityQuestion']);
     $SecurityAnswer = mysqli_real_escape_string($mysqli, $_POST['SecurityAnswer']);
     $sql = "SELECT *
-              FROM LoginCredentials
+              FROM Users
              WHERE Email    = '$email'
                 OR Username = '$user'";
 
@@ -36,7 +36,7 @@ if (isset($_POST['user'])) {
         strtolower($email);
         $Password = base64_encode($Password);
         $Password = sha1($Password);
-        $insert = "INSERT INTO LoginCredentials 
+        $insert = "INSERT INTO Users 
                                    (
                                     Email
                                    ,Username
@@ -61,7 +61,7 @@ if (isset($_POST['user'])) {
 
         if ($a) {
 
-            $query = "SELECT Id, Username FROM LoginCredentials ORDER BY Id DESC LIMIT 1";
+            $query = "SELECT Id, Username FROM Users ORDER BY Id DESC LIMIT 1";
 
             $result = $mysqli->query($query) or die('Falha no sistema, tente novamente mais tarde!');
 
