@@ -34,15 +34,12 @@ function onPreviewImageChange() {
         if (isSuccess) {
             console.log('Reading file')
             let reader = new FileReader();
-            document.getElementById('fileAlert').style.display = '';
             reader.readAsDataURL(inputFile);
-            submitButton.disabled = false;
             reader.onload = function (oFREvent) {
                 document.getElementById("UploadPreview").src = oFREvent.target.result;
             }
             } else {
             console.log('Não suportado: ' + inputFile.name);
-            submitButton.disabled = true;
             document.getElementById('fileAlert').style.display = 'block';
             document.getElementById('fileAlert').innerHTML = 'O formato inserido não é válido!'
         }
