@@ -41,23 +41,32 @@ if (isset($_POST['submit'])) {
     }
     //Variáveis dos campos obtidos da view "AtualizarPerfil.php"
     $user = mysqli_real_escape_string($mysqli, $_POST['update_username']);
-    $email = mysqli_real_escape_string($mysqli, $_POST['update_email']);
     $Instagram = mysqli_real_escape_string($mysqli, $_POST['update_Instagram']);
     $Twitter = mysqli_real_escape_string($mysqli, $_POST['update_twitter']);
     $PhoneNumber = mysqli_real_escape_string($mysqli, $_POST['update_phoneNumber']);
-    
 
+    $username = $_SESSION['username'];
+
+    $querystring1 = "SELECT username,  FROM Users";
+    $catchArr = $mysqli->query($querystring1);
+    if ($row = $catchArr -> fetch_assoc()) {
+        $row['username'] == $user ? $user = $username : $condition = true;
+    }
+
+    if ($condition == true) {
         $sql = "UPDATE Users 
-                   SET Email            = '$email'
+                   SET 
                       ,Username         = '$user'
                       ,TwitterAccount   = '$Twitter'
                       ,InstagramAccount = '$Instagram'
                       ,PhoneNumber      = '$PhoneNumber'
                       ,UpdatedAt        =  NOW()
                  WHERE Id               =  $Id";
+    }
+
     $mysqli->query($sql) or die('Erro');
 
-    $SQL_ = "UPDATE posts SET OwnerName = '$user',UpdatedAt=NOW() WHERE Id = $Id";
+    $SQL_ = "UPDATE posts SET OwnerName = '$user', UpdatedAt=NOW() WHERE OwnerId = $Id";
     $_SESSION['username'] = $user;
     $mysqli->query($SQL_) or die('Erro');
     header('location: ../view/AtualizarPerfil.php');

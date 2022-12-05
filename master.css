@@ -283,7 +283,7 @@ body {
     grid-template-rows: 115px 115px 115px 115px;
     gap: 0px 20px;
     grid-auto-flow: row;
-    grid-template-areas: "Image Email usuario" "Image PhoneNumber ig" "Image twitter .." ".. Textarea Textarea";
+    grid-template-areas: "Image usuario PhoneNumber" "Image ig twitter" "Image Textarea Textarea " ".. Textarea Textarea";
 }
 
 .Image {
@@ -296,10 +296,6 @@ body {
 
 .Textarea {
     grid-area: Textarea;
-}
-
-.Email {
-    grid-area: Email;
 }
 
 .PhoneNumber {
@@ -488,4 +484,10 @@ body {
     left: 0;
     z-index: -1;
     height: 100%;
+}
+
+.error_message {
+    color: red;
+    font-size: 0.75rem;
+    margin: 1px;
 }

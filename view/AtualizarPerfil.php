@@ -49,11 +49,6 @@ function ProfilePhotoExists($row, $id)
     <form action="../api/AtualizarPerfil.php" method="POST" enctype="multipart/form-data">
         <!-- O container que deixa alinhado e organizado todos os campos do formulário. -->
         <div class="div-container container">
-            <!-- Email -->
-            <div class="Email">
-                <label for="update_email" class="form-label">Email:</label>
-                <input type="email" class="form-control " name="update_email" id="update_email" value="<?php echo $row['Email'] ?>">
-            </div>
             <!-- Imagem -->
             <div class="Image">
                 <div class="file-upload">

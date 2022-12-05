@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
         $Password = base64_encode($Password);
         $Password = sha1($Password);
         if ( $Password != $row['Password']) {
-            echo '<p>Senha incorreta!</p>';
+            header('Location: login.php?u=0');
             return;
         }
         if (!isset($_SESSION)) {
@@ -26,9 +26,16 @@ if (isset($_POST['login'])) {
         header('Location: index.php');
         return;
     }
-    echo "Usuário não cadastrado";
+    header('Location: login.php?u=0');
     return ;
 }
+    $message = '';
+    if (isset($_REQUEST['u'])) {
+        $validation = $_REQUEST['u'];
+        if (!$validation) {
+            $message = "Usuário ou senha não identificados!";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +58,7 @@ if (isset($_POST['login'])) {
             <h1>TROCABOOK</h1>
             <br>
             <h4 class="mt-5 header-color">Bem vindo, é sempre um prazer!</h4>
-            <br>
+            <p class="error_message"><?php echo $message ?></p>
             <input name="login" type="text" class="username form-control" placeholder="Digite seu nome de usuário ou Email" required>
             <br>
             <input name="Password" type="Password" class="Password form-control" placeholder="Digite sua senha" required>

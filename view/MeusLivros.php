@@ -70,7 +70,7 @@ $record = $mysqli->query($sql);
             </div>
             <div class="card-body img-thumbnail">
                 <h5 class="card-title">' . $row['Title'] . '</h5>
-                <p class="card-text">' . $row['content'] . '.</p>
+                <p class="card-text">' . $row['content'] . '</p>
             </div>
                 <div class="card-footer text-muted d-flex justify-content-between">
                     <p class="data-hora me-auto"><em>' . $row['PostsCreatedAt'] . '</em></p>

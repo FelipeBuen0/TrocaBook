@@ -113,7 +113,7 @@ function validateSocialMedia($socialMedia, $socialMedia_) {
             </div>
             <div class="card-body img-thumbnail">
                 <h5 class="card-title">' . $PostRow['Title'] . '</h5>
-                <p class="card-text">' . $PostRow['content'] . '.</p>
+                <p class="card-text">' . $PostRow['content'] . '</p>
             </div>
                 <div class="card-footer text-muted d-flex justify-content-between">
                     <p class="data-hora me-auto"><em>' . $PostRow['CreatedAt'] . '</em></p>
